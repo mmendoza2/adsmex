@@ -1,0 +1,10 @@
+
+
+development:
+  adapter: postgresql
+  encoding: unicode
+  database: adsmex_dev
+  username:  Meme
+  password:
+  host: localhost
+  port: 5432

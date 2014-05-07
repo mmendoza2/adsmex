@@ -1,0 +1,77 @@
+<script>
+    $(document).ready(function () {
+
+
+        var myLatlng = new google.maps.LatLng(23.634501,-102.55278399999997);
+        var mapOptions = {
+            zoom: 4,
+            center: myLatlng
+        }
+        var map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
+
+        // Place a draggable marker on the map
+        var marker = new google.maps.Marker({
+            position: myLatlng,
+            map: map,
+            draggable:true,
+            title:"Your location!"
+        });
+
+        google.maps.event.addListener(marker, 'dragend', function (event) {
+            document.getElementById("latbox").value = this.getPosition().lat();
+            document.getElementById("lngbox").value = this.getPosition().lng();
+        });
+
+    });
+</script>
+
+
+    <div class="col-md-6 col-md-offset-3">
+      <div class="row">
+        <h1>Configura tu Pérfil</h1>
+        <section>
+          <%= render 'shared/avatar' %>
+        </section>
+        <%= form_for(@user, :html => { :multipart => true }) do |f| %>
+                <%= render 'shared/error_messages', object: f.object %>
+            <%= f.label :imagen %>
+            <%= f.file_field :photo %>
+              <div class="col-md-7">  <%= f.submit "Actualiza tu foto de Perfil", class: "btn  btn-large btn-success" %>     </div>
+        <% end %>
+        <br>
+        <br>
+
+        <div class="row">
+          <p>¿Quiéres modificar tu ubicación para recomendarte lugares cercanos?.</p>
+        </div>
+        <%= form_for(@user, :html => { :multipart => true }) do |f| %>
+            <div id="map-canvas" class="thumbnail" style="height:200px"></div>
+            <div id="latlong">
+              <div> <%= f.hidden_field :lat, class: 'input-sm', id: 'latbox' %></div>
+              <div> <%= f.hidden_field :lng, class: 'input-sm', id: 'lngbox' %></div>
+            </div>
+            <div class="col-md-7 " style="margin-bottom: 10px"><%= f.submit "Actualiza tu ubiación", class: 'btn btn-large btn-primary' %></div>
+        <% end %>
+
+        <br>
+        <br>
+        <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f| %>
+              <%= devise_error_messages! %>
+              <div><br />
+              <%= f.email_field :email, :autofocus => true,  :placeholder => "Email", class: 'input-sm' %></div>
+              <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+                <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+              <% end %>
+              <div> <i>(Dejalo en blanco si no lo quieres cambiar)</i><br />
+              <%= f.password_field :password, :autocomplete => "off", :autofocus => true, :placeholder => "Password", class: 'input-sm' %></div>
+                <div><br />
+              <%= f.password_field :password_confirmation, :placeholder => "Confirma tu Password", class: 'input-sm' %></div>
+
+              <% if f.object.encrypted_password.present? %>
+                <div class="field"><i>(Necesitamos tu password actual por seguridad)</i><br />
+                  <%= f.password_field :current_password, :placeholder => "Password Actual", class: 'input-sm' %></div>
+              <% end %>
+              <div class="col-md-7"><%= f.submit "Actualizar", class: 'btn btn-primary' %></div>
+        <% end %>
+      </div>
+    </div>

@@ -1,0 +1,69 @@
+
+
+<% if signed_in? %>
+
+
+
+<% else %>
+
+
+
+
+
+
+    <header id="header" class="site-header">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="user text-right">
+
+            </div>
+          </div><!-- /span12 -->
+        </div><!-- /row-fluid -->
+
+
+
+        <div class="row">
+          <div class="col-md-12">
+            <% [:notice, :error, :alert].each do |level| %>
+                <% unless flash[level].blank? %>
+                    <div data-alert="alert" class="alert-message <%= flash_class(level) %> fade in">
+                      <a class="close" href="#">×</a>
+                      <%= content_tag :p, flash[level] %>
+                    </div>
+                <% end %>
+            <% end %>
+
+                <div class="header-description">
+
+                      <h2 style="font-size: 58px">Ingresa a tu cuenta de ADSMEX</h2>
+
+                      <div class="header-btn"><%= link_to "Ingresa", new_user_session_path %></div>
+                </div><!-- /header-description -->
+
+            <div class="header-features">
+
+              <div style="height: 150px">
+
+              </div>
+            </div>
+
+
+
+
+
+
+            </div><!-- /header-features -->
+
+          </div><!-- /span12 -->
+        </div><!-- /row-fluid -->
+      </div><!-- /container -->
+    </header>
+
+
+
+
+
+
+
+<% end %>

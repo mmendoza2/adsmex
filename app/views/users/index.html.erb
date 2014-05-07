@@ -1,0 +1,139 @@
+
+
+<% if current_user.admin?  %>
+
+
+
+
+    <div class="row ">
+      <div class="col-sm-12 col-xs-12 ">
+
+        <div class="panel-group" id="accordion">
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              <h4 class="panel-title">
+                <a data-toggle="collapse"  href="#collapseFour">
+                  Sigue a otros usuarios
+                </a>
+              </h4>
+            </div>
+            <div id="collapseFour" class="panel-collapse collapse in">
+              <div class="panel-body">
+                <div class="row" style="margin-top: -15px; margin-bottom: -15px">
+                  <table class="table table-hover">
+
+                    <tr>
+                      <th> <%= link_to "id", :sort => "Id" %>  </th>
+                      <th> <%= link_to "name", :sort => "Name" %>  </th>
+                      <th> <%= link_to "email", :sort => "Email" %>  </th>
+                      <th> <%= link_to "username", :sort => "Username" %>  </th>
+
+
+                      <th> <%= link_to "admin", :sort => "admin" %>  </th>
+                      <th> <%= link_to "created_at", :sort => "Created_at" %>  </th>
+                    </tr>
+
+                    <% @user.each do |x|  %>
+                        <tr>
+                          <td> <%=x.id %></td>
+                          <td> <%=x.name %></td>
+                          <td> <%=x.email %></td>
+                          <td> <%=x.username %></td>
+                          <td> <%=x.admin %></td>
+                          <td>
+                            <%= form_for(x, :html => { :multipart => true }) do |f| %>
+                                <%= render 'shared/error_messages', object: f.object %>
+
+                                <%= f.label "admin?" %>
+                                <%= f.check_box :admin %>
+
+                                <%= f.submit "Submit", class: "button small radius" %>
+                            <% end %>
+                          </td>
+
+                          <td> <%=x.created_at %></td>
+
+                        </tr>
+                    <% end  %>
+
+                  </table>
+
+
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+
+
+
+    </div>
+
+
+<% else  %>
+
+
+    <h1>Usuarios</h1>
+
+
+
+    <div class="col-sm-10 col-xs-12 col-sm-offset-1 col-xs-offset-0 " style="margin-top: 50px">
+
+
+
+
+
+    <div class="row" style="margin-top: -15px; margin-bottom: -15px">
+      <%    @users.limit(50).order("RANDOM()").each do |user|          %>
+
+          <div class="row wrapusers" >
+            <div class="col-xs-4    col-sm-2">
+              <% if user.photo_file_name.blank?  %>
+                  <% if user.avatar.blank?  %>
+                      <%= link_to image_tag("http://imagenes.adsmex.s3.amazonaws.com/users/default_user.png", class: "avatarchico"), user %>
+                  <%         else %>
+                      <%= link_to image_tag(user.avatar, class: "avatarchico"), user %>
+                  <% end %>
+              <% else %>
+                  <%= link_to image_tag(user.photo.url(:square), class: "avatarchico"), user  %>
+              <%         end %>
+            </div>
+            <div class="col-xs-5 col-sm-5 ">
+              <div class="row">
+                <small>   <%=        link_to user.name, user %>  </small>
+              </div>
+              <div class="row hidden-xs">
+                <small>   Actividades que sigue <%=         user.followed_actividades.count %>     </small>
+              </div>
+
+            </div>
+            <div class="col-sm-3 col-xs-3">
+              <div class="row">
+
+              </div>
+
+            </div>
+
+          </div>
+
+
+
+
+      <%  end  %>
+
+    </div>
+
+
+    </div>
+
+
+
+
+<% end  %>
+
+
+
