@@ -1,6 +1,8 @@
 AdsMex::Application.routes.draw do
 
 
+  resources :cursos
+
   root to: 'adsmex#home'
   devise_for :users, controllers: {omniauth_callbacks: "omniauth_callbacks"}
   match '/users/auth/facebook' => 'devise/omniauth_callbacks#passthru',  via: 'get'
