@@ -66,3 +66,308 @@ Migrating to CreatetablePuntuaje (20140508015701)
   [1m[35mSQL (1.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ($1)  [["version", "20140508015701"]]
   [1m[36m (1.2ms)[0m  [1mCOMMIT[0m
   [1m[35mActiveRecord::SchemaMigration Load (0.4ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36mSQL (30.9ms)[0m  [1mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  [1m[35m (79.0ms)[0m  CREATE TABLE "actimicros" ("id" serial primary key, "actividad_id" integer, "micrositio_id" integer) 
+  [1m[36m (5.7ms)[0m  [1mCREATE TABLE "actividades" ("id" serial primary key, "actividad" character varying(255), "actividadpadre" character varying(255), "tagid" integer, "catid" integer, "tagparent" integer, "descripcion" character varying(255), "status" character varying(255), "icono" character varying(255), "photo_file_name" character varying(255), "photo_content_type" character varying(255), "photo_file_size" integer, "photo_updated_at" timestamp, "actividadpadre_id" integer, "slug" character varying(255), "categoria_id" integer) [0m
+  [1m[35m (1.8ms)[0m  CREATE INDEX "index_actividades_on_slug" ON "actividades" USING btree ("slug")
+  [1m[36m (5.4ms)[0m  [1mCREATE TABLE "actividadespadre" ("id" serial primary key, "tagid" integer, "catid" integer, "descripcion" character varying(255), "slug" character varying(255), "icono" character varying(255), "photo_file_name" character varying(255), "photo_content_type" character varying(255), "photo_file_size" integer, "photo_updated_at" timestamp, "status" integer, "actividadpadre" character varying(255)) [0m
+  [1m[35m (1.7ms)[0m  CREATE INDEX "index_actividadespadre_on_slug" ON "actividadespadre" USING btree ("slug")
+  [1m[36m (5.2ms)[0m  [1mCREATE TABLE "authorizations" ("id" serial primary key, "provider" character varying(255), "uid" character varying(255), "user_id" integer, "created_at" timestamp, "updated_at" timestamp) [0m
+  [1m[35m (4.6ms)[0m  CREATE TABLE "calificacion" ("id" serial primary key, "baja" integer, "media" integer, "alta" integer, "user_id" integer, "curso_id" integer) 
+  [1m[36m (3.3ms)[0m  [1mCREATE TABLE "categoria" ("id" serial primary key, "created_at" timestamp, "updated_at" timestamp) [0m
+  [1m[35m (5.2ms)[0m  CREATE TABLE "categorias" ("id" serial primary key, "descripcion" text, "slug" character varying(255), "name" character varying(255), "imagen" character varying(255), "icono" character varying(255), "photo_file_name" character varying(255), "photo_content_type" character varying(255), "photo_file_size" integer, "photo_updated_at" timestamp) 
+  [1m[36m (1.7ms)[0m  [1mCREATE INDEX "index_categorias_on_slug" ON "categorias" USING btree ("slug")[0m
+  [1m[35m (5.2ms)[0m  CREATE TABLE "cursos" ("id" serial primary key, "name" character varying(255), "slug" character varying(255), "created_at" timestamp, "updated_at" timestamp, "categoria" character varying(255)) 
+  [1m[36m (6.1ms)[0m  [1mCREATE TABLE "estados" ("id" serial primary key, "created_at" timestamp, "updated_at" timestamp, "estado" character varying(255), "slug" character varying(255), "poblacion" character varying(255), "photo_file_name" character varying(255), "photo_content_type" character varying(255), "photo_file_size" integer, "photo_updated_at" timestamp, "user_id" integer, "descripcion" text) [0m
+  [1m[35m (1.5ms)[0m  CREATE INDEX "index_estados_on_slug" ON "estados" USING btree ("slug")
+  [1m[36m (6.9ms)[0m  [1mCREATE TABLE "eventos" ("id" serial primary key, "nombre" character varying(255), "descripcion" character varying(255), "fecha" timestamp, "photo" character varying(255), "urloficial" character varying(255), "artista" character varying(255), "entradatipo" character varying(255), "precio" character varying(255), "votos" integer, "ranking" character varying(255), "created_at" timestamp, "updated_at" timestamp, "photo_file_name" character varying(255), "photo_content_type" character varying(255), "photo_file_size" integer, "photo_updated_at" timestamp, "slug" character varying(255), "diaevento" character varying(255), "d1" character varying(255), "d2" character varying(255), "d3" character varying(255), "d4" character varying(255), "d5" character varying(255), "d6" character varying(255), "d7" character varying(255), "d8" character varying(255), "d9" character varying(255), "d10" character varying(255), "estado" character varying(255), "poblacion" character varying(255), "principal" integer, "fechainicio" integer, "fechafin" integer, "mes" integer, "dia" integer, "actividad" integer, "fotografia" character varying(255), "institucion" integer, "user_id" integer, "estado_id" integer, "actividad_id" integer) [0m
+  [1m[35m (1.7ms)[0m  CREATE INDEX "index_eventos_on_slug" ON "eventos" USING btree ("slug")
+  [1m[36m (5.4ms)[0m  [1mCREATE TABLE "imagenes" ("id" serial primary key, "slug" character varying(255), "name" character varying(255), "photo_file_name" character varying(255), "photo_content_type" character varying(255), "photo_file_size" integer, "photo_updated_at" timestamp, "user_id" integer, "micrositio_id" integer, "evento_id" integer, "actividad_id" integer) [0m
+  [1m[35m (1.5ms)[0m  CREATE INDEX "index_imagenes_on_slug" ON "imagenes" USING btree ("slug")
+  [1m[36m (6.3ms)[0m  [1mCREATE TABLE "locations" ("id" serial primary key, "address" character varying(255), "latitude" float, "longitude" float, "created_at" timestamp, "updated_at" timestamp, "city" character varying(255), "state" character varying(255), "state_code" character varying(255), "postal_code" character varying(255), "country" character varying(255), "country_code" character varying(255), "distance" character varying(255)) [0m
+  [1m[35m (4.9ms)[0m  CREATE TABLE "mensajes" ("id" serial primary key, "sender" integer, "receiver" integer, "long" integer, "lat" integer, "photo_file_name" character varying(255), "photo_content_type" character varying(255), "photo_file_size" character varying(255), "photo_updated_at" timestamp, "slug" character varying(255), "mapa" text, "created_at" timestamp, "updated_at" timestamp) 
+  [1m[36m (8.1ms)[0m  [1mCREATE TABLE "microposts" ("id" serial primary key, "content" character varying(255), "user_id" integer, "created_at" timestamp, "updated_at" timestamp, "coordenadas" text, "receiver_id" integer) [0m
+  [1m[35m (2.5ms)[0m  CREATE INDEX "index_microposts_on_user_id_and_created_at" ON "microposts" USING btree ("user_id", "created_at")
+  [1m[36m (8.6ms)[0m  [1mCREATE TABLE "micrositios" ("id" serial primary key, "name" character varying(255), "photo_file_name" character varying(255), "photo_content_type" character varying(255), "photo_file_size" character varying(255), "photo_updated_at" timestamp, "slug" character varying(255), "catid" integer, "created_by" integer, "ordering" integer, "metakey" text, "hits" integer, "imagen" text, "lugar" text, "munciudad" text, "mapa" text, "comollegar" text, "votos" integer, "fb_author" character varying(255), "tagcategorias" character varying(255), "user_id" integer, "descripcion" text, "status" integer, "created" timestamp, "publish_up" timestamp, "urls" text, "estado" character varying(255), "favorito" integer, "estado_id" integer, "actividad_id" integer, "reference" text) [0m
+  [1m[35m (2.2ms)[0m  CREATE INDEX "index_micrositios_on_slug" ON "micrositios" USING btree ("slug")
+  [1m[36m (5.7ms)[0m  [1mCREATE TABLE "relationactividades" ("id" serial primary key, "follower_id" integer, "followed_id" integer, "created_at" timestamp, "updated_at" timestamp) [0m
+  [1m[35m (2.1ms)[0m  CREATE INDEX "index_relationactividades_on_followed_id" ON "relationactividades" USING btree ("followed_id")
+  [1m[36m (3.6ms)[0m  [1mCREATE UNIQUE INDEX "index_relationactividades_on_follower_id_and_followed_id" ON "relationactividades" USING btree ("follower_id", "followed_id")[0m
+  [1m[35m (2.3ms)[0m  CREATE INDEX "index_relationactividades_on_follower_id" ON "relationactividades" USING btree ("follower_id")
+  [1m[36m (5.1ms)[0m  [1mCREATE TABLE "relationactividadespadre" ("id" serial primary key, "follower_id" integer, "followed_id" integer, "created_at" timestamp, "updated_at" timestamp) [0m
+  [1m[35m (2.2ms)[0m  CREATE INDEX "index_relationactividadespadre_on_followed_id" ON "relationactividadespadre" USING btree ("followed_id")
+  [1m[36m (1.5ms)[0m  [1mCREATE UNIQUE INDEX "index_relationactividadespadre_on_follower_id_and_followed_id" ON "relationactividadespadre" USING btree ("follower_id", "followed_id")[0m
+  [1m[35m (1.8ms)[0m  CREATE INDEX "index_relationactividadespadre_on_follower_id" ON "relationactividadespadre" USING btree ("follower_id")
+  [1m[36m (3.6ms)[0m  [1mCREATE TABLE "relationcategorias" ("id" serial primary key, "follower_id" integer, "followed_id" integer, "created_at" timestamp, "updated_at" timestamp) [0m
+  [1m[35m (2.1ms)[0m  CREATE INDEX "index_relationcategorias_on_followed_id" ON "relationcategorias" USING btree ("followed_id")
+  [1m[36m (1.7ms)[0m  [1mCREATE UNIQUE INDEX "index_relationcategorias_on_follower_id_and_followed_id" ON "relationcategorias" USING btree ("follower_id", "followed_id")[0m
+  [1m[35m (1.9ms)[0m  CREATE INDEX "index_relationcategorias_on_follower_id" ON "relationcategorias" USING btree ("follower_id")
+  [1m[36m (4.6ms)[0m  [1mCREATE TABLE "relationestados" ("id" serial primary key, "follower_id" integer, "followed_id" integer, "created_at" timestamp, "updated_at" timestamp) [0m
+  [1m[35m (2.2ms)[0m  CREATE INDEX "index_relationestados_on_followed_id" ON "relationestados" USING btree ("followed_id")
+  [1m[36m (1.6ms)[0m  [1mCREATE UNIQUE INDEX "index_relationestados_on_follower_id_and_followed_id" ON "relationestados" USING btree ("follower_id", "followed_id")[0m
+  [1m[35m (1.5ms)[0m  CREATE INDEX "index_relationestados_on_follower_id" ON "relationestados" USING btree ("follower_id")
+  [1m[36m (3.6ms)[0m  [1mCREATE TABLE "relationeventos" ("id" serial primary key, "follower_id" integer, "followed_id" integer, "created_at" timestamp, "updated_at" timestamp) [0m
+  [1m[35m (1.7ms)[0m  CREATE INDEX "index_relationeventos_on_followed_id" ON "relationeventos" USING btree ("followed_id")
+  [1m[36m (1.8ms)[0m  [1mCREATE UNIQUE INDEX "index_relationeventos_on_follower_id_and_followed_id" ON "relationeventos" USING btree ("follower_id", "followed_id")[0m
+  [1m[35m (1.4ms)[0m  CREATE INDEX "index_relationeventos_on_follower_id" ON "relationeventos" USING btree ("follower_id")
+  [1m[36m (3.9ms)[0m  [1mCREATE TABLE "relationmicrositios" ("id" serial primary key, "follower_id" integer, "followed_id" integer, "created_at" timestamp, "updated_at" timestamp) [0m
+  [1m[35m (1.4ms)[0m  CREATE INDEX "index_relationmicrositios_on_followed_id" ON "relationmicrositios" USING btree ("followed_id")
+  [1m[36m (1.8ms)[0m  [1mCREATE UNIQUE INDEX "index_relationmicrositios_on_follower_id_and_followed_id" ON "relationmicrositios" USING btree ("follower_id", "followed_id")[0m
+  [1m[35m (1.6ms)[0m  CREATE INDEX "index_relationmicrositios_on_follower_id" ON "relationmicrositios" USING btree ("follower_id")
+  [1m[36m (4.2ms)[0m  [1mCREATE TABLE "relationships" ("id" serial primary key, "follower_id" integer, "followed_id" integer, "created_at" timestamp, "updated_at" timestamp) [0m
+  [1m[35m (2.1ms)[0m  CREATE INDEX "index_relationships_on_followed_id" ON "relationships" USING btree ("followed_id")
+  [1m[36m (2.1ms)[0m  [1mCREATE UNIQUE INDEX "index_relationships_on_follower_id_and_followed_id" ON "relationships" USING btree ("follower_id", "followed_id")[0m
+  [1m[35m (2.0ms)[0m  CREATE INDEX "index_relationships_on_follower_id" ON "relationships" USING btree ("follower_id")
+  [1m[36m (5.5ms)[0m  [1mCREATE TABLE "search_suggestionns" ("id" serial primary key, "term" character varying(255), "popularity" integer, "created_at" timestamp, "updated_at" timestamp) [0m
+  [1m[35m (5.4ms)[0m  CREATE TABLE "search_suggestions" ("id" serial primary key, "term" character varying(255), "popularity" integer, "created_at" timestamp, "updated_at" timestamp) 
+  [1m[36m (11.4ms)[0m  [1mCREATE TABLE "users" ("id" serial primary key, "name" character varying(255), "email" character varying(255), "created_at" timestamp, "updated_at" timestamp, "password_digest" character varying(255), "remember_token" character varying(255), "admin" boolean, "slug" character varying(255), "username" character varying(255), "password" character varying(255), "usertype" character varying(255), "block" integer, "sendEmail" integer, "gid" integer, "registerDate" timestamp, "lastvisitDate" timestamp, "activation" character varying(255), "params" text, "fb_author" character varying(255), "ntlparam" text, "uid" character varying(255), "provider" character varying(255), "oauth_token" character varying(255), "oauth_expires_at" timestamp, "avatar" character varying(255), "encrypted_password" character varying(255) DEFAULT '' NOT NULL, "reset_password_token" character varying(255), "reset_password_sent_at" timestamp, "remember_created_at" timestamp, "sign_in_count" integer DEFAULT 0 NOT NULL, "current_sign_in_at" timestamp, "last_sign_in_at" timestamp, "current_sign_in_ip" character varying(255), "last_sign_in_ip" character varying(255), "photo_file_name" character varying(255), "photo_content_type" character varying(255), "photo_file_size" integer, "photo_updated_at" timestamp, "lat" text, "lng" text) [0m
+  [1m[35m (2.2ms)[0m  CREATE UNIQUE INDEX "index_users_on_email" ON "users" USING btree ("email")
+  [1m[36m (2.0ms)[0m  [1mCREATE INDEX "index_users_on_remember_token" ON "users" USING btree ("remember_token")[0m
+  [1m[35m (2.2ms)[0m  CREATE UNIQUE INDEX "index_users_on_reset_password_token" ON "users" USING btree ("reset_password_token")
+  [1m[36m (1.9ms)[0m  [1mCREATE INDEX "index_users_on_slug" ON "users" USING btree ("slug")[0m
+  [1m[35m (1.7ms)[0m  CREATE TABLE "schema_migrations" ("version" character varying(255) NOT NULL) 
+  [1m[36m (1.4ms)[0m  [1mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [1m[35m (0.5ms)[0m  SELECT version FROM "schema_migrations"
+  [1m[36m (1.6ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20140508015701')[0m
+  [1m[35m (1.0ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20130311191400')
+  [1m[36m (0.5ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20130311194153')[0m
+  [1m[35m (0.5ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20130311201841')
+  [1m[36m (0.5ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20130314184954')[0m
+  [1m[35m (0.5ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20130315015932')
+  [1m[36m (0.5ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20130315175534')[0m
+  [1m[35m (0.5ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20130315230445')
+  [1m[36m (0.5ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20130912204237')[0m
+  [1m[35m (0.6ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20130914165248')
+  [1m[36m (0.4ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20130925205343')[0m
+  [1m[35m (0.5ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20130926212429')
+  [1m[36m (0.5ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20130926214310')[0m
+  [1m[35m (0.4ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20130926215115')
+  [1m[36m (0.5ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20130930203812')[0m
+  [1m[35m (0.5ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20130930203933')
+  [1m[36m (0.5ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20130930213350')[0m
+  [1m[35m (0.6ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20131001033456')
+  [1m[36m (0.4ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20131001203603')[0m
+  [1m[35m (0.4ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20131003160040')
+  [1m[36m (0.5ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20131007005558')[0m
+  [1m[35m (0.5ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20131007151929')
+  [1m[36m (0.5ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20131007210652')[0m
+  [1m[35m (0.5ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20131008062311')
+  [1m[36m (0.5ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20131010212144')[0m
+  [1m[35m (0.4ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20131012210456')
+  [1m[36m (0.4ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20131012215354')[0m
+  [1m[35m (0.5ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20131018020542')
+  [1m[36m (0.5ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20131021185757')[0m
+  [1m[35m (0.4ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20131022165051')
+  [1m[36m (0.4ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20131024194347')[0m
+  [1m[35m (0.4ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20131024200928')
+  [1m[36m (0.4ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20131025204215')[0m
+  [1m[35m (0.5ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20131025211106')
+  [1m[36m (0.5ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20131030071623')[0m
+  [1m[35m (0.5ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20131030072045')
+  [1m[36m (0.4ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20131030072527')[0m
+  [1m[35m (0.6ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20131030180356')
+  [1m[36m (0.5ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20131101220344')[0m
+  [1m[35m (0.4ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20131101222038')
+  [1m[36m (0.4ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20131102022504')[0m
+  [1m[35m (0.4ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20131102023830')
+  [1m[36m (0.4ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20131105220645')[0m
+  [1m[35m (0.5ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20131107002027')
+  [1m[36m (0.4ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20131112185645')[0m
+  [1m[35m (0.4ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20131112234622')
+  [1m[36m (0.4ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20131119221839')[0m
+  [1m[35m (0.6ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20131121220038')
+  [1m[36m (0.5ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20131121221931')[0m
+  [1m[35m (0.4ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20131125200407')
+  [1m[36m (0.4ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20131126224114')[0m
+  [1m[35m (0.4ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20131126230144')
+  [1m[36m (0.5ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20131203211141')[0m
+  [1m[35m (0.4ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20131204010413')
+  [1m[36m (0.4ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20131204053722')[0m
+  [1m[35m (0.5ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20131204170647')
+  [1m[36m (0.7ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20131205184854')[0m
+  [1m[35m (0.6ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20131205190540')
+  [1m[36m (0.4ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20131205191549')[0m
+  [1m[35m (0.4ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20131206023525')
+  [1m[36m (0.6ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20131216215249')[0m
+  [1m[35m (0.5ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20131217014012')
+  [1m[36m (0.4ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20131217051447')[0m
+  [1m[35m (0.5ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20131217165939')
+  [1m[36m (0.5ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20131217230630')[0m
+  [1m[35m (0.6ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20131219030416')
+  [1m[36m (0.5ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20131219044515')[0m
+  [1m[35m (0.4ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20131219044912')
+  [1m[36m (0.4ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20131224175951')[0m
+  [1m[35m (0.4ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20140115080947')
+  [1m[36m (0.5ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20140130220209')[0m
+  [1m[35m (0.5ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20140206212439')
+  [1m[36m (0.5ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20140218001729')[0m
+  [1m[35m (0.5ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20140330212851')
+  [1m[36m (0.4ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20140422205954')[0m
+  [1m[35m (0.4ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20140506225650')
+  [1m[36m (0.4ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20140508001315')[0m
+  [1m[36mSQL (2.1ms)[0m  [1mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  [1m[35m (3.6ms)[0m  DROP TABLE "actimicros"
+  [1m[36m (4.6ms)[0m  [1mCREATE TABLE "actimicros" ("id" serial primary key, "actividad_id" integer, "micrositio_id" integer) [0m
+  [1m[35m (3.6ms)[0m  DROP TABLE "actividades"
+  [1m[36m (5.3ms)[0m  [1mCREATE TABLE "actividades" ("id" serial primary key, "actividad" character varying(255), "actividadpadre" character varying(255), "tagid" integer, "catid" integer, "tagparent" integer, "descripcion" character varying(255), "status" character varying(255), "icono" character varying(255), "photo_file_name" character varying(255), "photo_content_type" character varying(255), "photo_file_size" integer, "photo_updated_at" timestamp, "actividadpadre_id" integer, "slug" character varying(255), "categoria_id" integer) [0m
+  [1m[35m (2.0ms)[0m  CREATE INDEX "index_actividades_on_slug" ON "actividades" USING btree ("slug")
+  [1m[36m (3.2ms)[0m  [1mDROP TABLE "actividadespadre"[0m
+  [1m[35m (5.4ms)[0m  CREATE TABLE "actividadespadre" ("id" serial primary key, "tagid" integer, "catid" integer, "descripcion" character varying(255), "slug" character varying(255), "icono" character varying(255), "photo_file_name" character varying(255), "photo_content_type" character varying(255), "photo_file_size" integer, "photo_updated_at" timestamp, "status" integer, "actividadpadre" character varying(255)) 
+  [1m[36m (1.7ms)[0m  [1mCREATE INDEX "index_actividadespadre_on_slug" ON "actividadespadre" USING btree ("slug")[0m
+  [1m[35m (2.6ms)[0m  DROP TABLE "authorizations"
+  [1m[36m (5.9ms)[0m  [1mCREATE TABLE "authorizations" ("id" serial primary key, "provider" character varying(255), "uid" character varying(255), "user_id" integer, "created_at" timestamp, "updated_at" timestamp) [0m
+  [1m[35m (2.1ms)[0m  DROP TABLE "calificacion"
+  [1m[36m (3.9ms)[0m  [1mCREATE TABLE "calificacion" ("id" serial primary key, "baja" integer, "media" integer, "alta" integer, "user_id" integer, "curso_id" integer) [0m
+  [1m[35m (2.1ms)[0m  DROP TABLE "categoria"
+  [1m[36m (3.4ms)[0m  [1mCREATE TABLE "categoria" ("id" serial primary key, "created_at" timestamp, "updated_at" timestamp) [0m
+  [1m[35m (2.9ms)[0m  DROP TABLE "categorias"
+  [1m[36m (5.5ms)[0m  [1mCREATE TABLE "categorias" ("id" serial primary key, "descripcion" text, "slug" character varying(255), "name" character varying(255), "imagen" character varying(255), "icono" character varying(255), "photo_file_name" character varying(255), "photo_content_type" character varying(255), "photo_file_size" integer, "photo_updated_at" timestamp) [0m
+  [1m[35m (1.6ms)[0m  CREATE INDEX "index_categorias_on_slug" ON "categorias" USING btree ("slug")
+  [1m[36m (4.5ms)[0m  [1mDROP TABLE "cursos"[0m
+  [1m[35m (8.0ms)[0m  CREATE TABLE "cursos" ("id" serial primary key, "name" character varying(255), "slug" character varying(255), "nivel" character varying(255), "created_at" timestamp, "updated_at" timestamp, "categoria" character varying(255)) 
+  [1m[36m (4.2ms)[0m  [1mDROP TABLE "estados"[0m
+  [1m[35m (8.2ms)[0m  CREATE TABLE "estados" ("id" serial primary key, "created_at" timestamp, "updated_at" timestamp, "estado" character varying(255), "slug" character varying(255), "poblacion" character varying(255), "photo_file_name" character varying(255), "photo_content_type" character varying(255), "photo_file_size" integer, "photo_updated_at" timestamp, "user_id" integer, "descripcion" text) 
+  [1m[36m (2.2ms)[0m  [1mCREATE INDEX "index_estados_on_slug" ON "estados" USING btree ("slug")[0m
+  [1m[35m (4.7ms)[0m  DROP TABLE "eventos"
+  [1m[36m (9.9ms)[0m  [1mCREATE TABLE "eventos" ("id" serial primary key, "nombre" character varying(255), "descripcion" character varying(255), "fecha" timestamp, "photo" character varying(255), "urloficial" character varying(255), "artista" character varying(255), "entradatipo" character varying(255), "precio" character varying(255), "votos" integer, "ranking" character varying(255), "created_at" timestamp, "updated_at" timestamp, "photo_file_name" character varying(255), "photo_content_type" character varying(255), "photo_file_size" integer, "photo_updated_at" timestamp, "slug" character varying(255), "diaevento" character varying(255), "d1" character varying(255), "d2" character varying(255), "d3" character varying(255), "d4" character varying(255), "d5" character varying(255), "d6" character varying(255), "d7" character varying(255), "d8" character varying(255), "d9" character varying(255), "d10" character varying(255), "estado" character varying(255), "poblacion" character varying(255), "principal" integer, "fechainicio" integer, "fechafin" integer, "mes" integer, "dia" integer, "actividad" integer, "fotografia" character varying(255), "institucion" integer, "user_id" integer, "estado_id" integer, "actividad_id" integer) [0m
+  [1m[35m (2.4ms)[0m  CREATE INDEX "index_eventos_on_slug" ON "eventos" USING btree ("slug")
+  [1m[36m (4.7ms)[0m  [1mDROP TABLE "imagenes"[0m
+  [1m[35m (8.1ms)[0m  CREATE TABLE "imagenes" ("id" serial primary key, "slug" character varying(255), "name" character varying(255), "photo_file_name" character varying(255), "photo_content_type" character varying(255), "photo_file_size" integer, "photo_updated_at" timestamp, "user_id" integer, "micrositio_id" integer, "evento_id" integer, "actividad_id" integer) 
+  [1m[36m (2.1ms)[0m  [1mCREATE INDEX "index_imagenes_on_slug" ON "imagenes" USING btree ("slug")[0m
+  [1m[35m (3.6ms)[0m  DROP TABLE "locations"
+  [1m[36m (8.2ms)[0m  [1mCREATE TABLE "locations" ("id" serial primary key, "address" character varying(255), "latitude" float, "longitude" float, "created_at" timestamp, "updated_at" timestamp, "city" character varying(255), "state" character varying(255), "state_code" character varying(255), "postal_code" character varying(255), "country" character varying(255), "country_code" character varying(255), "distance" character varying(255)) [0m
+  [1m[35m (3.8ms)[0m  DROP TABLE "mensajes"
+  [1m[36m (6.3ms)[0m  [1mCREATE TABLE "mensajes" ("id" serial primary key, "sender" integer, "receiver" integer, "long" integer, "lat" integer, "photo_file_name" character varying(255), "photo_content_type" character varying(255), "photo_file_size" character varying(255), "photo_updated_at" timestamp, "slug" character varying(255), "mapa" text, "created_at" timestamp, "updated_at" timestamp) [0m
+  [1m[35m (3.7ms)[0m  DROP TABLE "microposts"
+  [1m[36m (7.8ms)[0m  [1mCREATE TABLE "microposts" ("id" serial primary key, "content" character varying(255), "user_id" integer, "created_at" timestamp, "updated_at" timestamp, "coordenadas" text, "receiver_id" integer) [0m
+  [1m[35m (2.6ms)[0m  CREATE INDEX "index_microposts_on_user_id_and_created_at" ON "microposts" USING btree ("user_id", "created_at")
+  [1m[36m (4.7ms)[0m  [1mDROP TABLE "micrositios"[0m
+  [1m[35m (9.2ms)[0m  CREATE TABLE "micrositios" ("id" serial primary key, "name" character varying(255), "photo_file_name" character varying(255), "photo_content_type" character varying(255), "photo_file_size" character varying(255), "photo_updated_at" timestamp, "slug" character varying(255), "catid" integer, "created_by" integer, "ordering" integer, "metakey" text, "hits" integer, "imagen" text, "lugar" text, "munciudad" text, "mapa" text, "comollegar" text, "votos" integer, "fb_author" character varying(255), "tagcategorias" character varying(255), "user_id" integer, "descripcion" text, "status" integer, "created" timestamp, "publish_up" timestamp, "urls" text, "estado" character varying(255), "favorito" integer, "estado_id" integer, "actividad_id" integer, "reference" text) 
+  [1m[36m (2.4ms)[0m  [1mCREATE INDEX "index_micrositios_on_slug" ON "micrositios" USING btree ("slug")[0m
+  [1m[35m (4.4ms)[0m  DROP TABLE "relationactividades"
+  [1m[36m (5.5ms)[0m  [1mCREATE TABLE "relationactividades" ("id" serial primary key, "follower_id" integer, "followed_id" integer, "created_at" timestamp, "updated_at" timestamp) [0m
+  [1m[35m (2.1ms)[0m  CREATE INDEX "index_relationactividades_on_followed_id" ON "relationactividades" USING btree ("followed_id")
+  [1m[36m (2.2ms)[0m  [1mCREATE UNIQUE INDEX "index_relationactividades_on_follower_id_and_followed_id" ON "relationactividades" USING btree ("follower_id", "followed_id")[0m
+  [1m[35m (1.9ms)[0m  CREATE INDEX "index_relationactividades_on_follower_id" ON "relationactividades" USING btree ("follower_id")
+  [1m[36m (4.3ms)[0m  [1mDROP TABLE "relationactividadespadre"[0m
+  [1m[35m (5.7ms)[0m  CREATE TABLE "relationactividadespadre" ("id" serial primary key, "follower_id" integer, "followed_id" integer, "created_at" timestamp, "updated_at" timestamp) 
+  [1m[36m (2.1ms)[0m  [1mCREATE INDEX "index_relationactividadespadre_on_followed_id" ON "relationactividadespadre" USING btree ("followed_id")[0m
+  [1m[35m (2.1ms)[0m  CREATE UNIQUE INDEX "index_relationactividadespadre_on_follower_id_and_followed_id" ON "relationactividadespadre" USING btree ("follower_id", "followed_id")
+  [1m[36m (2.2ms)[0m  [1mCREATE INDEX "index_relationactividadespadre_on_follower_id" ON "relationactividadespadre" USING btree ("follower_id")[0m
+  [1m[35m (4.3ms)[0m  DROP TABLE "relationcategorias"
+  [1m[36m (6.4ms)[0m  [1mCREATE TABLE "relationcategorias" ("id" serial primary key, "follower_id" integer, "followed_id" integer, "created_at" timestamp, "updated_at" timestamp) [0m
+  [1m[35m (1.7ms)[0m  CREATE INDEX "index_relationcategorias_on_followed_id" ON "relationcategorias" USING btree ("followed_id")
+  [1m[36m (2.0ms)[0m  [1mCREATE UNIQUE INDEX "index_relationcategorias_on_follower_id_and_followed_id" ON "relationcategorias" USING btree ("follower_id", "followed_id")[0m
+  [1m[35m (1.6ms)[0m  CREATE INDEX "index_relationcategorias_on_follower_id" ON "relationcategorias" USING btree ("follower_id")
+  [1m[36m (3.5ms)[0m  [1mDROP TABLE "relationestados"[0m
+  [1m[35m (3.8ms)[0m  CREATE TABLE "relationestados" ("id" serial primary key, "follower_id" integer, "followed_id" integer, "created_at" timestamp, "updated_at" timestamp) 
+  [1m[36m (2.1ms)[0m  [1mCREATE INDEX "index_relationestados_on_followed_id" ON "relationestados" USING btree ("followed_id")[0m
+  [1m[35m (1.6ms)[0m  CREATE UNIQUE INDEX "index_relationestados_on_follower_id_and_followed_id" ON "relationestados" USING btree ("follower_id", "followed_id")
+  [1m[36m (1.4ms)[0m  [1mCREATE INDEX "index_relationestados_on_follower_id" ON "relationestados" USING btree ("follower_id")[0m
+  [1m[35m (2.8ms)[0m  DROP TABLE "relationeventos"
+  [1m[36m (5.4ms)[0m  [1mCREATE TABLE "relationeventos" ("id" serial primary key, "follower_id" integer, "followed_id" integer, "created_at" timestamp, "updated_at" timestamp) [0m
+  [1m[35m (2.2ms)[0m  CREATE INDEX "index_relationeventos_on_followed_id" ON "relationeventos" USING btree ("followed_id")
+  [1m[36m (2.2ms)[0m  [1mCREATE UNIQUE INDEX "index_relationeventos_on_follower_id_and_followed_id" ON "relationeventos" USING btree ("follower_id", "followed_id")[0m
+  [1m[35m (2.2ms)[0m  CREATE INDEX "index_relationeventos_on_follower_id" ON "relationeventos" USING btree ("follower_id")
+  [1m[36m (4.4ms)[0m  [1mDROP TABLE "relationmicrositios"[0m
+  [1m[35m (5.7ms)[0m  CREATE TABLE "relationmicrositios" ("id" serial primary key, "follower_id" integer, "followed_id" integer, "created_at" timestamp, "updated_at" timestamp) 
+  [1m[36m (2.5ms)[0m  [1mCREATE INDEX "index_relationmicrositios_on_followed_id" ON "relationmicrositios" USING btree ("followed_id")[0m
+  [1m[35m (2.1ms)[0m  CREATE UNIQUE INDEX "index_relationmicrositios_on_follower_id_and_followed_id" ON "relationmicrositios" USING btree ("follower_id", "followed_id")
+  [1m[36m (1.9ms)[0m  [1mCREATE INDEX "index_relationmicrositios_on_follower_id" ON "relationmicrositios" USING btree ("follower_id")[0m
+  [1m[35m (4.5ms)[0m  DROP TABLE "relationships"
+  [1m[36m (5.7ms)[0m  [1mCREATE TABLE "relationships" ("id" serial primary key, "follower_id" integer, "followed_id" integer, "created_at" timestamp, "updated_at" timestamp) [0m
+  [1m[35m (2.1ms)[0m  CREATE INDEX "index_relationships_on_followed_id" ON "relationships" USING btree ("followed_id")
+  [1m[36m (2.1ms)[0m  [1mCREATE UNIQUE INDEX "index_relationships_on_follower_id_and_followed_id" ON "relationships" USING btree ("follower_id", "followed_id")[0m
+  [1m[35m (1.9ms)[0m  CREATE INDEX "index_relationships_on_follower_id" ON "relationships" USING btree ("follower_id")
+  [1m[36m (3.0ms)[0m  [1mDROP TABLE "search_suggestionns"[0m
+  [1m[35m (5.9ms)[0m  CREATE TABLE "search_suggestionns" ("id" serial primary key, "term" character varying(255), "popularity" integer, "created_at" timestamp, "updated_at" timestamp) 
+  [1m[36m (2.9ms)[0m  [1mDROP TABLE "search_suggestions"[0m
+  [1m[35m (5.7ms)[0m  CREATE TABLE "search_suggestions" ("id" serial primary key, "term" character varying(255), "popularity" integer, "created_at" timestamp, "updated_at" timestamp) 
+  [1m[36m (6.0ms)[0m  [1mDROP TABLE "users"[0m
+  [1m[35m (7.0ms)[0m  CREATE TABLE "users" ("id" serial primary key, "name" character varying(255), "email" character varying(255), "created_at" timestamp, "updated_at" timestamp, "password_digest" character varying(255), "remember_token" character varying(255), "admin" boolean, "slug" character varying(255), "username" character varying(255), "password" character varying(255), "usertype" character varying(255), "block" integer, "sendEmail" integer, "gid" integer, "registerDate" timestamp, "lastvisitDate" timestamp, "activation" character varying(255), "params" text, "fb_author" character varying(255), "ntlparam" text, "uid" character varying(255), "provider" character varying(255), "oauth_token" character varying(255), "oauth_expires_at" timestamp, "avatar" character varying(255), "encrypted_password" character varying(255) DEFAULT '' NOT NULL, "reset_password_token" character varying(255), "reset_password_sent_at" timestamp, "remember_created_at" timestamp, "sign_in_count" integer DEFAULT 0 NOT NULL, "current_sign_in_at" timestamp, "last_sign_in_at" timestamp, "current_sign_in_ip" character varying(255), "last_sign_in_ip" character varying(255), "photo_file_name" character varying(255), "photo_content_type" character varying(255), "photo_file_size" integer, "photo_updated_at" timestamp, "lat" text, "lng" text) 
+  [1m[36m (1.8ms)[0m  [1mCREATE UNIQUE INDEX "index_users_on_email" ON "users" USING btree ("email")[0m
+  [1m[35m (1.7ms)[0m  CREATE INDEX "index_users_on_remember_token" ON "users" USING btree ("remember_token")
+  [1m[36m (1.7ms)[0m  [1mCREATE UNIQUE INDEX "index_users_on_reset_password_token" ON "users" USING btree ("reset_password_token")[0m
+  [1m[35m (1.7ms)[0m  CREATE INDEX "index_users_on_slug" ON "users" USING btree ("slug")
+  [1m[36m (0.9ms)[0m  [1mSELECT version FROM "schema_migrations"[0m
+  [1m[36mActiveRecord::SchemaMigration Load (34.3ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to Addtable (20140529191749)
+  [1m[35m (0.3ms)[0m  BEGIN
+  [1m[36m (344.5ms)[0m  [1mCREATE TABLE "cursosusuario" ("id" serial primary key, "user_id" integer, "curso_id" integer) [0m
+  [1m[35mSQL (29.6ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ($1)  [["version", "20140529191749"]]
+  [1m[36m (1.2ms)[0m  [1mCOMMIT[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.5ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36mActiveRecord::SchemaMigration Load (0.9ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to AdddColumntoCursos (20140529194730)
+  [1m[35m (0.3ms)[0m  BEGIN
+  [1m[36m (1.5ms)[0m  [1mALTER TABLE "cursos" ADD COLUMN "d2013" integer[0m
+  [1m[35m (0.8ms)[0m  ALTER TABLE "cursos" ADD COLUMN "d2014" integer
+  [1m[36m (0.7ms)[0m  [1mALTER TABLE "cursos" ADD COLUMN "d2015" integer[0m
+  [1m[35m (0.6ms)[0m  ALTER TABLE "cursos" ADD COLUMN "d2016" integer
+  [1m[36m (1.0ms)[0m  [1mALTER TABLE "cursos" ADD COLUMN "d2017" integer[0m
+  [1m[35m (1.0ms)[0m  ALTER TABLE "cursos" ADD COLUMN "d2018" integer
+  [1m[36mSQL (1.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ($1)[0m  [["version", "20140529194730"]]
+  [1m[35m (0.7ms)[0m  COMMIT
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.8ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.9ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+Migrating to AdddColumntoCursos (20140529194730)
+  [1m[36m (0.3ms)[0m  [1mBEGIN[0m
+  [1m[35m (47.6ms)[0m  ALTER TABLE "cursos" DROP "d2018"
+  [1m[36m (0.4ms)[0m  [1mALTER TABLE "cursos" DROP "d2017"[0m
+  [1m[35m (0.3ms)[0m  ALTER TABLE "cursos" DROP "d2016"
+  [1m[36m (0.3ms)[0m  [1mALTER TABLE "cursos" DROP "d2015"[0m
+  [1m[35m (0.4ms)[0m  ALTER TABLE "cursos" DROP "d2014"
+  [1m[36m (0.3ms)[0m  [1mALTER TABLE "cursos" DROP "d2013"[0m
+  [1m[35mSQL (9.1ms)[0m  DELETE FROM "schema_migrations" WHERE "schema_migrations"."version" = '20140529194730'
+  [1m[36m (0.5ms)[0m  [1mCOMMIT[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.6ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36mActiveRecord::SchemaMigration Load (0.8ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to AdddColumntoCursos (20140529194730)
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36m (1.0ms)[0m  [1mALTER TABLE "cursos" ADD COLUMN "d2013" integer[0m
+  [1m[35m (0.4ms)[0m  ALTER TABLE "cursos" ADD COLUMN "d2014" integer
+  [1m[36m (0.4ms)[0m  [1mALTER TABLE "cursos" ADD COLUMN "d2015" integer[0m
+  [1m[35m (0.3ms)[0m  ALTER TABLE "cursos" ADD COLUMN "d2016" integer
+  [1m[36m (0.3ms)[0m  [1mALTER TABLE "cursos" ADD COLUMN "d2017" integer[0m
+  [1m[35m (0.3ms)[0m  ALTER TABLE "cursos" ADD COLUMN "d2018" integer
+  [1m[36m (0.5ms)[0m  [1mALTER TABLE "cursosusuario" ADD COLUMN "d2013" integer[0m
+  [1m[35m (0.3ms)[0m  ALTER TABLE "cursosusuario" ADD COLUMN "d2014" integer
+  [1m[36m (0.5ms)[0m  [1mALTER TABLE "cursosusuario" ADD COLUMN "d2015" integer[0m
+  [1m[35m (0.3ms)[0m  ALTER TABLE "cursosusuario" ADD COLUMN "d2016" integer
+  [1m[36m (0.3ms)[0m  [1mALTER TABLE "cursosusuario" ADD COLUMN "d2017" integer[0m
+  [1m[35m (0.4ms)[0m  ALTER TABLE "cursosusuario" ADD COLUMN "d2018" integer
+  [1m[36mSQL (1.0ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ($1)[0m  [["version", "20140529194730"]]
+  [1m[35m (0.7ms)[0m  COMMIT
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.7ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.7ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+Migrating to AdddColumntoCursos (20140529194730)
+  [1m[36m (0.4ms)[0m  [1mBEGIN[0m
+  [1m[35m (2.3ms)[0m  ALTER TABLE "cursosusuario" DROP "d2018"
+  [1m[36m (0.4ms)[0m  [1mALTER TABLE "cursosusuario" DROP "d2017"[0m
+  [1m[35m (0.7ms)[0m  ALTER TABLE "cursosusuario" DROP "d2016"
+  [1m[36m (0.4ms)[0m  [1mALTER TABLE "cursosusuario" DROP "d2015"[0m
+  [1m[35m (0.3ms)[0m  ALTER TABLE "cursosusuario" DROP "d2014"
+  [1m[36m (0.4ms)[0m  [1mALTER TABLE "cursosusuario" DROP "d2013"[0m
+  [1m[35m (0.6ms)[0m  ALTER TABLE "cursos" DROP "d2018"
+  [1m[36m (0.3ms)[0m  [1mALTER TABLE "cursos" DROP "d2017"[0m
+  [1m[35m (0.3ms)[0m  ALTER TABLE "cursos" DROP "d2016"
+  [1m[36m (0.3ms)[0m  [1mALTER TABLE "cursos" DROP "d2015"[0m
+  [1m[35m (0.3ms)[0m  ALTER TABLE "cursos" DROP "d2014"
+  [1m[36m (0.3ms)[0m  [1mALTER TABLE "cursos" DROP "d2013"[0m
+  [1m[35mSQL (1.0ms)[0m  DELETE FROM "schema_migrations" WHERE "schema_migrations"."version" = '20140529194730'
+  [1m[36m (0.9ms)[0m  [1mCOMMIT[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.5ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36mActiveRecord::SchemaMigration Load (0.7ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to AdddColumntoCursos (20140529194730)
+  [1m[35m (0.3ms)[0m  BEGIN
+  [1m[36m (5.2ms)[0m  [1mCREATE TABLE "2013" ("id" serial primary key, "user_id" integer, "curso_id" integer) [0m
+  [1m[35m (2.8ms)[0m  CREATE TABLE "2014" ("id" serial primary key, "user_id" integer, "curso_id" integer) 
+  [1m[36m (3.3ms)[0m  [1mCREATE TABLE "2015" ("id" serial primary key, "user_id" integer, "curso_id" integer) [0m
+  [1m[35m (30.6ms)[0m  CREATE TABLE "2016" ("id" serial primary key, "user_id" integer, "curso_id" integer) 
+  [1m[36m (4.5ms)[0m  [1mCREATE TABLE "2017" ("id" serial primary key, "user_id" integer, "curso_id" integer) [0m
+  [1m[35m (26.7ms)[0m  CREATE TABLE "2018" ("id" serial primary key, "user_id" integer, "curso_id" integer) 
+  [1m[36mSQL (1.2ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ($1)[0m  [["version", "20140529194730"]]
+  [1m[35m (1.7ms)[0m  COMMIT
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m

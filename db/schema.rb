@@ -11,10 +11,40 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140508015701) do
+ActiveRecord::Schema.define(version: 20140529194730) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "2013", force: true do |t|
+    t.integer "user_id"
+    t.integer "curso_id"
+  end
+
+  create_table "2014", force: true do |t|
+    t.integer "user_id"
+    t.integer "curso_id"
+  end
+
+  create_table "2015", force: true do |t|
+    t.integer "user_id"
+    t.integer "curso_id"
+  end
+
+  create_table "2016", force: true do |t|
+    t.integer "user_id"
+    t.integer "curso_id"
+  end
+
+  create_table "2017", force: true do |t|
+    t.integer "user_id"
+    t.integer "curso_id"
+  end
+
+  create_table "2018", force: true do |t|
+    t.integer "user_id"
+    t.integer "curso_id"
+  end
 
   create_table "actimicros", force: true do |t|
     t.integer "actividad_id"
@@ -95,9 +125,15 @@ ActiveRecord::Schema.define(version: 20140508015701) do
   create_table "cursos", force: true do |t|
     t.string   "name"
     t.string   "slug"
+    t.string   "nivel"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "categoria"
+  end
+
+  create_table "cursosusuario", force: true do |t|
+    t.integer "user_id"
+    t.integer "curso_id"
   end
 
   create_table "estados", force: true do |t|
