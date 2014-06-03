@@ -14,6 +14,8 @@
    inflect.irregular 'imagen', 'imagenes'
    inflect.irregular 'categoria', 'categorias'
 
+   inflect.irregular 'cursousuario', 'cursosusuario'
+
  end
 
 # These inflection rules are supported but not enabled by default:

@@ -5,6 +5,9 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,  :omniauthable,
          :recoverable, :rememberable, :trackable, :validatable
 
+  has_many :cursosusuario
+  has_many :cursos, through: :cursosusuario
+
 
   has_many :micrositios
   has_many :microposts

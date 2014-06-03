@@ -1,10 +1,9 @@
 
 
-
 <div>
   <% if @user.photo_file_name.blank?  %>
       <% if @user.avatar.blank?  %>
-          <%=  image_tag "http://imagenes.adsmex.s3.amazonaws.com/users/default_user.png", class: "avatargrande" %>
+          <%=  image_tag "http://imagenes.notelimites.s3.amazonaws.com/users/default_user.png", class: "avatarmedio" %>
       <%	 else %>
           <%= image_tag @user.avatar, class: "avatargrande" %>
       <% end %>
@@ -13,23 +12,100 @@
   <%	 end %>
 </div>
 <h4><%= @user.name %></h4>
+<%	 if current_user.id == @user.id %>
+    <h2>Cursos a tomar</h2>
+    <table class="table table-hover">
+      <tr>
+        <th> <%= link_to "name", :sort => "Name" %>  </th>
+        <th> <%= link_to "categoria", :sort => "categoria" %>  </th>
+        <th> <%= link_to "nivel1", :sort => "nivel1" %>  </th>
+        <th> <%= link_to "nivel2", :sort => "nivel2" %>  </th>
+        <th> <%= link_to "nivel3", :sort => "nivel3" %>  </th>
+      </tr>
+      <%	 current_user.cursosusuario.each do |x| %>
 
+          <%	 if  x.a2014 == true %>
+              <%	 if x.nivel3 == true  %>
+                  <tr>
+                    <td> <%= link_to(x.curso.name ,x.curso)  %></td>
+                    <td> <%= x.curso.categoria %></td>
+                    <td> <%= x.nivel1 %></td>
+                    <td> <%= x.nivel2 %></td>
+                    <td> <%= x.nivel3 %></td>
+                  </tr>
+              <%	 else if x.nivel2 == true  %>
+                      <tr>
+                        <td> <%= link_to(x.curso.name ,x.curso)  %></td>
+                        <td> <%= x.curso.categoria %></td>
+                        <td> <%= x.nivel1 %></td>
+                        <td> <%= x.nivel2 %></td>
+                        <td> <%= x.nivel3 %></td>
+                      </tr>
+                  <%	 else if x.nivel1 == true  %>
+                          <tr>
+                            <td> <%= link_to(x.curso.name ,x.curso)  %></td>
+                            <td> <%= x.curso.categoria %></td>
+                            <td> <%= x.nivel1 %></td>
+                            <td> <%= x.nivel2 %></td>
+                            <td> <%= x.nivel3 %></td>
+                          </tr>
+                      <%	 end  end end %>
+          <%	 else if  x.a2013 == true %>
+                  <%	 if x.nivel3 == true  %>
+                  <%	 else if x.nivel2 == true  %>
+                      <%	 else if x.nivel1 == true  %>
+                          <%	 end  end end %>
+              <%	 else   %>
+              <%	 end  end %>
+      <% end %>
+    </table>
+<%	 else %>
 
-<div class="col-md-6">
-  <h3> Randomchat Feed</h3>
-  <strong>URL</strong>  <%= link_to user_path(@user), @user %><br />
-  <strong>Microposts</strong> <%= @user.microposts.count %>
-  <%= render 'shared/feed' %>
-</div>
+    <h2>Cursos que usuario esta tomando</h2>
 
-<div>
-</div>
+    <table class="table table-hover">
+      <tr>
+        <th> <%= link_to "name", :sort => "Name" %>  </th>
+        <th> <%= link_to "categoria", :sort => "categoria" %>  </th>
+        <th> <%= link_to "nivel1", :sort => "nivel1" %>  </th>
+        <th> <%= link_to "nivel2", :sort => "nivel2" %>  </th>
+        <th> <%= link_to "nivel3", :sort => "nivel3" %>  </th>
+      </tr>
+      <%	 @user.cursosusuario.each do |x| %>
 
-
-
-<div class="col-md-6" style="margin-top: 100px">
-  <% if @user.microposts.any? %>
-  <% end %>
-</div>
-
-
+          <%	 if  x.a2014 == true %>
+              <%	 if x.nivel3 == true  %>
+                  <tr>
+                    <td> <%= link_to(x.curso.name ,x.curso)  %></td>
+                    <td> <%= x.curso.categoria %></td>
+                    <td> <%= x.nivel1 %></td>
+                    <td> <%= x.nivel2 %></td>
+                    <td> <%= x.nivel3 %></td>
+                  </tr>
+              <%	 else if x.nivel2 == true  %>
+                      <tr>
+                        <td> <%= link_to(x.curso.name ,x.curso)  %></td>
+                        <td> <%= x.curso.categoria %></td>
+                        <td> <%= x.nivel1 %></td>
+                        <td> <%= x.nivel2 %></td>
+                        <td> <%= x.nivel3 %></td>
+                      </tr>
+                  <%	 else if x.nivel1 == true  %>
+                          <tr>
+                            <td> <%= link_to(x.curso.name ,x.curso)  %></td>
+                            <td> <%= x.curso.categoria %></td>
+                            <td> <%= x.nivel1 %></td>
+                            <td> <%= x.nivel2 %></td>
+                            <td> <%= x.nivel3 %></td>
+                          </tr>
+                      <%	 end  end end %>
+          <%	 else if  x.a2013 == true %>
+                  <%	 if x.nivel3 == true  %>
+                  <%	 else if x.nivel2 == true  %>
+                      <%	 else if x.nivel1 == true  %>
+                          <%	 end  end end %>
+              <%	 else   %>
+              <%	 end  end %>
+      <% end %>
+    </table>
+<%	 end %>

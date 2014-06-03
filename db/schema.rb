@@ -11,40 +11,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140529194730) do
+ActiveRecord::Schema.define(version: 20140603021503) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
-
-  create_table "2013", force: true do |t|
-    t.integer "user_id"
-    t.integer "curso_id"
-  end
-
-  create_table "2014", force: true do |t|
-    t.integer "user_id"
-    t.integer "curso_id"
-  end
-
-  create_table "2015", force: true do |t|
-    t.integer "user_id"
-    t.integer "curso_id"
-  end
-
-  create_table "2016", force: true do |t|
-    t.integer "user_id"
-    t.integer "curso_id"
-  end
-
-  create_table "2017", force: true do |t|
-    t.integer "user_id"
-    t.integer "curso_id"
-  end
-
-  create_table "2018", force: true do |t|
-    t.integer "user_id"
-    t.integer "curso_id"
-  end
 
   create_table "actimicros", force: true do |t|
     t.integer "actividad_id"
@@ -129,11 +99,54 @@ ActiveRecord::Schema.define(version: 20140529194730) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "categoria"
+    t.boolean  "nivel1"
+    t.boolean  "nivel2"
+    t.boolean  "nivel3"
+  end
+
+  create_table "cursos2013", force: true do |t|
+    t.integer "user_id"
+    t.integer "curso_id"
+    t.integer "date"
+  end
+
+  create_table "cursos2014", force: true do |t|
+    t.integer "user_id"
+    t.integer "curso_id"
+  end
+
+  create_table "cursos2015", force: true do |t|
+    t.integer "user_id"
+    t.integer "curso_id"
+  end
+
+  create_table "cursos2016", force: true do |t|
+    t.integer "user_id"
+    t.integer "curso_id"
+  end
+
+  create_table "cursos2017", force: true do |t|
+    t.integer "user_id"
+    t.integer "curso_id"
+  end
+
+  create_table "cursos2018", force: true do |t|
+    t.integer "user_id"
+    t.integer "curso_id"
   end
 
   create_table "cursosusuario", force: true do |t|
     t.integer "user_id"
     t.integer "curso_id"
+    t.boolean "a2013"
+    t.boolean "a2014"
+    t.boolean "a2015"
+    t.boolean "a2016"
+    t.boolean "a2017"
+    t.boolean "a2018"
+    t.boolean "nivel1"
+    t.boolean "nivel2"
+    t.boolean "nivel3"
   end
 
   create_table "estados", force: true do |t|

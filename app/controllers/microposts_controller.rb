@@ -9,7 +9,7 @@ class MicropostsController < ApplicationController
       redirect_to root_url
     else
       @feed_items = []
-      render 'notelimites/home'
+      render 'adsmex/home'
     end
   end
 

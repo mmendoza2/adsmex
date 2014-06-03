@@ -30,9 +30,9 @@ AdsMex::Application.configure do
   config.action_mailer.smtp_settings = {
       :address              => "smtp.gmail.com",
       :port                 => 587,
-      :domain               => 'adsmex.com',
-      :user_name            => 'ntl@adsmex.com',
-      :password             => 'NTL12wolmen',
+      :domain               => 'gmail.com',
+      :user_name            => 'man.m25@gmail.com',
+      :password             => 'MegM?880723',
       :authentication       => 'plain',
       :enable_starttls_auto => true  }
 

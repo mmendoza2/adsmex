@@ -1,25 +1,55 @@
 <h1>Cursos ADS</h1>
 
+
+
 <table class="table table-hover">
   <tr>
-    <th> <%= link_to "id", :sort => "Id" %>  </th>
-    <th> <%= link_to "categoria", :sort => "categoria" %>  </th>
-
     <th> <%= link_to "name", :sort => "Name" %>  </th>
-
+    <th> <%= link_to "categoria", :sort => "categoria" %>  </th>
+    <th> <%= link_to "nivel1", :sort => "nivel1" %>  </th>
+    <th> <%= link_to "nivel2", :sort => "nivel2" %>  </th>
+    <th> <%= link_to "nivel3", :sort => "nivel3" %>  </th>
   </tr>
+  <%	 current_user.cursosusuario.each do |x| %>
 
-  <% @cursos.each do |x|  %>
-      <tr>
-        <td> <%=x.id %></td>
-        <td> <%=x.categoria %></td>
-        <td> <%=x.name %></td>
+          <%	 if  x.a2014 == true %>
+               <%	 if x.nivel3 == true  %>
+                      <tr>
+                        <td> <%= link_to(x.curso.name ,x.curso)  %></td>
+                        <td> <%= x.curso.categoria %></td>
+                        <td> <%= x.nivel1 %></td>
+                        <td> <%= x.nivel2 %></td>
+                        <td> <%= x.nivel3 %></td>
+                      </tr>
+              <%	 else if x.nivel2 == true  %>
+                      <tr>
+                        <td> <%= link_to(x.curso.name ,x.curso)  %></td>
+                        <td> <%= x.curso.categoria %></td>
+                        <td> <%= x.nivel1 %></td>
+                        <td> <%= x.nivel2 %></td>
+                        <td> <%= x.nivel3 %></td>
+                      </tr>
+              <%	 else if x.nivel1 == true  %>
+                      <tr>
+                        <td> <%= link_to(x.curso.name ,x.curso)  %></td>
+                        <td> <%= x.curso.categoria %></td>
+                        <td> <%= x.nivel1 %></td>
+                        <td> <%= x.nivel2 %></td>
+                        <td> <%= x.nivel3 %></td>
+                      </tr>
+              <%	 end  end end %>
+          <%	 else if  x.a2013 == true %>
+               <%	 if x.nivel3 == true  %>
+               <%	 else if x.nivel2 == true  %>
+               <%	 else if x.nivel1 == true  %>
+               <%	 end  end end %>
+          <%	 else   %>
+          <%	 end  end %>
+  <% end %>
 
-  <% end  %>
+
+
 
 </table>
 
-
-
-<br>
 
