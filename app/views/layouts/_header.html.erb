@@ -5,13 +5,7 @@
 </script>
 <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=true&libraries=places"></script>
 <title><%= full_title(yield(:title)) %></title>
-<% if signed_in? 	  %>
-    <%= stylesheet_link_tag "application", media: "all", "data-turbolinks-track" => true %>
-<%  else %>
-    <%= stylesheet_link_tag "principal/custom"%>
-    <%= stylesheet_link_tag "bootstrap"%>
-    <%= stylesheet_link_tag "notelimites"%>
-<%  end %>
+<%= stylesheet_link_tag "application", media: "all", "data-turbolinks-track" => true %>
 <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
 <%= csrf_meta_tags %>
 <%= render 'layouts/shim' %>
@@ -41,7 +35,3 @@
         var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
     })();
 </script>
-
-<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
-
-

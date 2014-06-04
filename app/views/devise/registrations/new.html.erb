@@ -11,8 +11,6 @@
           <br>
           <h2 style="color: #ffffff; font-weight: 100; font-size: 40px" >¡Ingresa a ADSMEX!</h2>
           <br>
-
-
           <% [:notice, :error, :alert].each do |level| %>
               <% unless flash[level].blank? %>
                   <div data-alert="alert" class="alert-message <%= flash_class(level) %> fade in">
@@ -21,10 +19,8 @@
                   </div>
               <% end %>
           <% end %>
-
         </div>
             <section>
-
               <div class="row text-center" >
                 <%= devise_error_messages! %>
                 <div class="col-md-4 col-md-offset-4" >
@@ -49,7 +45,6 @@
       </div><!-- /span12 -->
     </div><!-- /row-fluid -->
   </div><!-- /container -->
-
 </header>
 
 
