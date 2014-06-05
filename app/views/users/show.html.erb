@@ -25,35 +25,36 @@
       <%	 current_user.cursosusuario.each do |x| %>
 
           <%	 if  x.a2014 == true %>
-              <%	 if x.nivel3 == true  %>
+
+              <%	 if x.nivel32014 == true  %>
                   <tr>
                     <td> <%= link_to(x.curso.name ,x.curso)  %></td>
                     <td> <%= x.curso.categoria %></td>
-                    <td> <%= x.nivel1 %></td>
-                    <td> <%= x.nivel2 %></td>
-                    <td> <%= x.nivel3 %></td>
+                    <td> <%= x.nivel12014 %></td>
+                    <td> <%= x.nivel22014 %></td>
+                    <td> <%= x.nivel32014 %></td>
                   </tr>
-              <%	 else if x.nivel2 == true  %>
-                      <tr>
-                        <td> <%= link_to(x.curso.name ,x.curso)  %></td>
-                        <td> <%= x.curso.categoria %></td>
-                        <td> <%= x.nivel1 %></td>
-                        <td> <%= x.nivel2 %></td>
-                        <td> <%= x.nivel3 %></td>
-                      </tr>
-                  <%	 else if x.nivel1 == true  %>
-                          <tr>
-                            <td> <%= link_to(x.curso.name ,x.curso)  %></td>
-                            <td> <%= x.curso.categoria %></td>
-                            <td> <%= x.nivel1 %></td>
-                            <td> <%= x.nivel2 %></td>
-                            <td> <%= x.nivel3 %></td>
-                          </tr>
-                      <%	 end  end end %>
+              <%    else if x.nivel22014 == true  %>
+                  <tr>
+                    <td> <%= link_to(x.curso.name ,x.curso)  %></td>
+                    <td> <%= x.curso.categoria %></td>
+                    <td> <%= x.nivel12014 %></td>
+                    <td> <%= x.nivel22014 %></td>
+                    <td> <%= x.nivel32014 %></td>
+                  </tr>
+              <%	else if x.nivel12014 == true  %>
+                  <tr>
+                    <td> <%= link_to(x.curso.name ,x.curso)  %></td>
+                    <td> <%= x.curso.categoria %></td>
+                    <td> <%= x.nivel12014 %></td>
+                    <td> <%= x.nivel22014 %></td>
+                    <td> <%= x.nivel32014 %></td>
+                  </tr>
+              <%	end  end end %>
           <%	 else if  x.a2013 == true %>
-                  <%	 if x.nivel3 == true  %>
-                  <%	 else if x.nivel2 == true  %>
-                      <%	 else if x.nivel1 == true  %>
+                  <%	 if x.nivel32013 == true  %>
+                  <%	 else if x.nivel22013 == true  %>
+                      <%	 else if x.nivel12013 == true  %>
                           <%	 end  end end %>
               <%	 else   %>
               <%	 end  end %>
@@ -74,35 +75,35 @@
       <%	 @user.cursosusuario.each do |x| %>
 
           <%	 if  x.a2014 == true %>
-              <%	 if x.nivel3 == true  %>
+              <%	 if x.nivel32014 == true  %>
                   <tr>
                     <td> <%= link_to(x.curso.name ,x.curso)  %></td>
                     <td> <%= x.curso.categoria %></td>
-                    <td> <%= x.nivel1 %></td>
-                    <td> <%= x.nivel2 %></td>
-                    <td> <%= x.nivel3 %></td>
+                    <td> <%= x.nivel12014 %></td>
+                    <td> <%= x.nivel22014 %></td>
+                    <td> <%= x.nivel32014 %></td>
                   </tr>
-              <%	 else if x.nivel2 == true  %>
+              <%     else if x.nivel22014 == true  %>
                       <tr>
                         <td> <%= link_to(x.curso.name ,x.curso)  %></td>
                         <td> <%= x.curso.categoria %></td>
-                        <td> <%= x.nivel1 %></td>
-                        <td> <%= x.nivel2 %></td>
-                        <td> <%= x.nivel3 %></td>
+                        <td> <%= x.nivel12014 %></td>
+                        <td> <%= x.nivel22014 %></td>
+                        <td> <%= x.nivel32014 %></td>
                       </tr>
-                  <%	 else if x.nivel1 == true  %>
+              <%	 else if x.nivel12014 == true  %>
                           <tr>
                             <td> <%= link_to(x.curso.name ,x.curso)  %></td>
                             <td> <%= x.curso.categoria %></td>
-                            <td> <%= x.nivel1 %></td>
-                            <td> <%= x.nivel2 %></td>
-                            <td> <%= x.nivel3 %></td>
+                            <td> <%= x.nivel12014 %></td>
+                            <td> <%= x.nivel22014 %></td>
+                            <td> <%= x.nivel32014 %></td>
                           </tr>
                       <%	 end  end end %>
           <%	 else if  x.a2013 == true %>
-                  <%	 if x.nivel3 == true  %>
-                  <%	 else if x.nivel2 == true  %>
-                      <%	 else if x.nivel1 == true  %>
+                  <%	 if x.nivel32013 == true  %>
+                  <%	 else if x.nivel22013 == true  %>
+                      <%	 else if x.nivel12013 == true  %>
                           <%	 end  end end %>
               <%	 else   %>
               <%	 end  end %>
