@@ -93,7 +93,7 @@ AdsMex::Application.configure do
       :authentication       => 'plain',
       :enable_starttls_auto => true  }
   # Specify what domain to use for mailer URLs
-  config.action_mailer.default_url_options = {host: 'localhost:3000'}
+  config.action_mailer.default_url_options = {host: 'adsmex.herokuapp.com'}
 
 
   config.paperclip_defaults = {
