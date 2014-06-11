@@ -23,8 +23,11 @@ gem 'jbuilder', '1.2.0'
 gem 'jquery-ui-rails', '4.1.1'
 gem 'koala', '1.9.0'
 gem 'pg', '0.17.1'
-gem 'bootstrap-sass', '3.0.3'
 
+# Forms, mail {
+gem 'mail_form', '~> 1.5.0.rc'
+gem 'simple_form', '~> 3.0.0.rc'
+# }
 
 
 group :development, :test do

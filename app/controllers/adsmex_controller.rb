@@ -2,9 +2,6 @@ class AdsmexController < ApplicationController
 
 
   def home
-      @micrositios = Micrositio.all
-      @eventos = Evento.all
-      @actividades = Actividad.all
       @users = User.all
   end
 

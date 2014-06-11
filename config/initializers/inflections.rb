@@ -15,6 +15,9 @@
    inflect.irregular 'categoria', 'categorias'
 
    inflect.irregular 'cursousuario', 'cursosusuario'
+   inflect.irregular 'archivo', 'archivos'
+   inflect.irregular 'relacionarchivo', 'relacionesarchivo'
+   inflect.irregular 'contact', 'contacts'
 
  end
 

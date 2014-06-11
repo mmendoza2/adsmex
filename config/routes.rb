@@ -1,6 +1,8 @@
 AdsMex::Application.routes.draw do
 
 
+  resources :archivos
+
   resources :cursos
 
   root to: 'adsmex#home'
@@ -66,6 +68,7 @@ AdsMex::Application.routes.draw do
   end
 
   resources :users
+  resources :contacts
   resources :actividades
   resources :actividades, :as => :actividad
   resources :actividadespadre

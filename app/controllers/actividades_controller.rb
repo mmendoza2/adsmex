@@ -37,7 +37,6 @@ class ActividadesController < ApplicationController
   # POST /actividades.json
   def create
     @actividad = Actividad.new(actividad_params)
-
     respond_to do |format|
       if @actividad.save
         format.html { redirect_to @actividad, notice: 'Actividad was successfully created.' }

@@ -13,14 +13,14 @@
 </div>
 <h4><%= @user.name %></h4>
 <%	 if current_user.id == @user.id %>
-    <h2>Cursos a tomar</h2>
+    <h2>Cursos a tomar en 2014</h2>
     <table class="table table-hover">
       <tr>
         <th> <%= link_to "name", :sort => "Name" %>  </th>
         <th> <%= link_to "categoria", :sort => "categoria" %>  </th>
-        <th> <%= link_to "nivel1", :sort => "nivel1" %>  </th>
-        <th> <%= link_to "nivel2", :sort => "nivel2" %>  </th>
-        <th> <%= link_to "nivel3", :sort => "nivel3" %>  </th>
+        <th> <%= link_to "Principiante", :sort => "nivel1" %>  </th>
+        <th> <%= link_to "Intermedio", :sort => "nivel2" %>  </th>
+        <th> <%= link_to "Experto", :sort => "nivel3" %>  </th>
       </tr>
       <%	 current_user.cursosusuario.each do |x| %>
 
@@ -30,24 +30,24 @@
                   <tr>
                     <td> <%= link_to(x.curso.name ,x.curso)  %></td>
                     <td> <%= x.curso.categoria %></td>
-                    <td> <%= x.nivel12014 %></td>
-                    <td> <%= x.nivel22014 %></td>
+                    <td>   </td>
+                    <td>   </td>
                     <td> <%= x.nivel32014 %></td>
                   </tr>
               <%    else if x.nivel22014 == true  %>
                   <tr>
                     <td> <%= link_to(x.curso.name ,x.curso)  %></td>
                     <td> <%= x.curso.categoria %></td>
-                    <td> <%= x.nivel12014 %></td>
+                    <td>  </td>
                     <td> <%= x.nivel22014 %></td>
-                    <td> <%= x.nivel32014 %></td>
+                    <td> </td>
                   </tr>
               <%	else if x.nivel12014 == true  %>
                   <tr>
                     <td> <%= link_to(x.curso.name ,x.curso)  %></td>
                     <td> <%= x.curso.categoria %></td>
-                    <td> <%= x.nivel12014 %></td>
-                    <td> <%= x.nivel22014 %></td>
+                    <td> </td>
+                    <td> </td>
                     <td> <%= x.nivel32014 %></td>
                   </tr>
               <%	end  end end %>

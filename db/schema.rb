@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140603021503) do
+ActiveRecord::Schema.define(version: 20140610023658) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -56,6 +56,19 @@ ActiveRecord::Schema.define(version: 20140603021503) do
   end
 
   add_index "actividadespadre", ["slug"], name: "index_actividadespadre_on_slug", using: :btree
+
+  create_table "archivos", force: true do |t|
+    t.string   "name"
+    t.integer  "size"
+    t.text     "descripcion"
+    t.string   "slug"
+    t.string   "archivo_file_name"
+    t.string   "archivo_content_type"
+    t.integer  "archivo_file_size"
+    t.datetime "archivo_updated_at"
+  end
+
+  add_index "archivos", ["slug"], name: "index_archivos_on_slug", using: :btree
 
   create_table "authorizations", force: true do |t|
     t.string   "provider"
@@ -313,6 +326,12 @@ ActiveRecord::Schema.define(version: 20140603021503) do
   end
 
   add_index "micrositios", ["slug"], name: "index_micrositios_on_slug", using: :btree
+
+  create_table "relacionarchivos", force: true do |t|
+    t.integer "user_id"
+    t.integer "curso_id"
+    t.integer "archivo_id"
+  end
 
   create_table "relationactividades", force: true do |t|
     t.integer  "follower_id"

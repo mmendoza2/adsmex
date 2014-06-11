@@ -1,0 +1,17 @@
+<%= form_for(@archivo, :html => { :multipart => true }) do |f|  %>
+    <%= render 'shared/error_messages', object: f.object %>
+
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+
+    <%= f.label :descripcion %>
+    <%= f.text_area :descripcion %>
+
+    <%= f.label :archivo %>
+    <%= f.file_field :archivo %>
+
+
+    <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
