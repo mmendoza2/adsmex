@@ -1,9 +1,9 @@
 class Archivo < ActiveRecord::Base
-has_many :relacionesarchivo
-has_many :cursos, :through => :relacionesarchivo
 
-has_many :relacionesarchivo
-has_many :users, :through => :relacionesarchivo
+belongs_to :curso
+belongs_to :user
+
+
 
 has_attached_file :archivo,
                   :url  => ":s3_domain_url",

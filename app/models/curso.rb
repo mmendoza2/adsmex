@@ -1,8 +1,8 @@
 class Curso < ActiveRecord::Base
 has_many :cursosusuario
 has_many :users, :through => :cursosusuario
-has_many :relacionesarchivo
-has_many :archivos, :through => :relacionesarchivo
+
+has_many :archivos
 
 
 extend FriendlyId

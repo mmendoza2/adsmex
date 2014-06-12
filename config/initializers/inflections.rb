@@ -16,7 +16,7 @@
 
    inflect.irregular 'cursousuario', 'cursosusuario'
    inflect.irregular 'archivo', 'archivos'
-   inflect.irregular 'relacionarchivo', 'relacionesarchivo'
+   inflect.irregular 'relacionarchivo', 'relacionarchivos'
    inflect.irregular 'contact', 'contacts'
 
  end

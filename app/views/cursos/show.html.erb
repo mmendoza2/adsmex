@@ -1,7 +1,13 @@
 
 
+<div class="col-md-4">
+  <%= @curso.archivos.name	  %>
 
-<%= form_for(@archivo, :html => { :multipart => true }) do |f|  %>
+</div>
+
+<div class="col-md-4 col-md-offset-8">
+
+<%= form_for(@curso.archivos.new, :html => { :multipart => true }) do |f|  %>
     <%= render 'shared/error_messages', object: f.object %>
 
     <%= f.label :name %>
@@ -14,7 +20,12 @@
     <%= f.file_field :archivo %>
 
 
+
+      <%= f.label :curso_id %>
+    <%= f.hidden_field :curso_id, :value => 222 %>
+
     <div class="actions">
       <%= f.submit %>
     </div>
 <% end %>
+</div>

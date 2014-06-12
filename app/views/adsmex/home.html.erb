@@ -38,17 +38,17 @@
           </div>
       </div>
 
-      <div class="row" style="height: 412px; background-color: #ffffff; padding: 30px; margin-right: -10px; margin-top: 10px  ">
+      <div class="row" style="height: 379px; background-color: #ffffff; padding: 30px; margin-right: -10px; margin-top: 10px  ">
         <h2><%=	 link_to "Conoce", nosotros_path %></h2>
         <div style="margin: -20px"><%= link_to image_tag("https://s3.amazonaws.com/adsmex/Nordlock-05.png"), nosotros_path %> </div>
           <hr>
-          <div class="row" style="height: 60px">
+          <div class="row" style="height: 25px">
             <ul class="nav"  style="font-size: 16px; color: #808080">
-              <li> Nuestra historia</li>
-              <li> Misión y Visión</li>
+              <li> Aplicaciones </li>
+              <li> Productos </li>
             </ul>
           </div>
-          <div class="row"  >
+          <div class="row" >
             <div class="col-md-offset-6" >
               <%=  image_tag "https://s3.amazonaws.com/adsmex/Productos+-04.png"%>
             </div>
@@ -103,7 +103,7 @@
     </div>
   </div>
 
-  <div class="row" style="height: 412px; background-color: #4c73a2; padding: 30px; margin-left: -10px; margin-top: 10px  ">
+  <div class="row" style="height: 379px; background-color: #4c73a2; padding: 30px; margin-left: -10px; margin-top: 10px  ">
     <h2 > <%=	 link_to "Contacto", nosotros_path, class: "blanco" %></h2>
 
     <%=	 render 'shared/new', :@contact => Contact.new %>

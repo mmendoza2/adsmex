@@ -8,8 +8,8 @@ class User < ActiveRecord::Base
   has_many :cursosusuario
   has_many :cursos, through: :cursosusuario
 
-  has_many :relacionesarchivo
-  has_many :archivos, :through => :relacionesarchivo
+
+  has_many :archivos
 
   has_many :micrositios
   has_many :microposts
