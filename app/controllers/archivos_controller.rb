@@ -58,7 +58,7 @@ class ArchivosController < ApplicationController
   def destroy
     @archivo.destroy
     respond_to do |format|
-      format.html { redirect_to archivos_url }
+      format.html { redirect_to :back, notice: 'Archivo fue eliminado.' }
       format.json { head :no_content }
     end
   end
@@ -71,6 +71,6 @@ class ArchivosController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def archivo_params
-      params.require(:archivo).permit(:name, :archivo, :descripcion)
+      params.require(:archivo).permit(:name, :archivo, :descripcion, :curso_id)
     end
 end

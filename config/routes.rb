@@ -16,7 +16,7 @@ AdsMex::Application.routes.draw do
   match '/users/seleccionlugares',    to: 'users#editlugares',    via: 'get'
   match '/users/seleccionusuarios',    to: 'users#editusuarios',    via: 'get'
   match '/index',    to: 'adsmex#index',    via: 'get'
-  match '/ayuda',    to: 'adsmex#ayuda',    via: 'get'
+  match '/productos',    to: 'adsmex#productos',    via: 'get'
   match '/places',    to: 'adsmex#places',    via: 'get'
   match '/zwopa',    to: 'adsmex#zwopa',    via: 'get'
   match '/terminos',    to: 'adsmex#terminos',    via: 'get'

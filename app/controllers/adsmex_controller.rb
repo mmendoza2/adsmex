@@ -5,7 +5,7 @@ class AdsmexController < ApplicationController
       @users = User.all
   end
 
-  def ayuda
+  def productos
   end
 
 

@@ -1,11 +1,37 @@
 
 
-<div class="col-md-4">
-  <%= @curso.archivos.name	  %>
+<div class="col-md-8">
+  <table class="table table-hover">
+    <tr>
+      <th> <%= link_to "Nombre", :sort => "Name" %>  </th>
+      <th> <%= link_to "Subido por:", :sort => "Subido por:" %>  </th>
+      <th> <%= link_to "Terminación", :sort => "Terminación" %>  </th>
+      <th> <%= link_to "Tamaño", :sort => "archivo_file_size" %>  </th>
+      <th> <%= link_to "fecha", :sort => "fecha" %>  </th>
+      <th> <%= link_to "Archivo", :sort => "Archivo" %>  </th>
+      <th> <%= link_to "Eliminar", :sort => "Eliminar" %>  </th>
+    </tr>
+      <%	 @curso.archivos.each do |x| %>
+        <tr>
+          <td> <%= x.name	  %></td>
+          <td> <%= x.user.name %></td>
+          <td> <%= x.archivo_content_type %></td>
+          <td> <%= x.archivo_file_size %></td>
+          <td> <%= x.archivo_updated_at %></td>
+          <td>   <%= link_to "Bajar", x.archivo.url(:original, false) %></td>
+           <%	 if x.user_id == current_user.id %>
+          <td>   <%= link_to "Eliminar", x, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+
+          <%	 else %>
+           <%	 end %>
+
+        </tr>
+      <%	 end %>
+  </table>
 
 </div>
 
-<div class="col-md-4 col-md-offset-8">
+<div class="col-md-4 ">
 
 <%= form_for(@curso.archivos.new, :html => { :multipart => true }) do |f|  %>
     <%= render 'shared/error_messages', object: f.object %>
@@ -19,10 +45,7 @@
     <%= f.label :archivo %>
     <%= f.file_field :archivo %>
 
-
-
-      <%= f.label :curso_id %>
-    <%= f.hidden_field :curso_id, :value => 222 %>
+    <%= f.hidden_field :curso_id, :value => @curso.id %>
 
     <div class="actions">
       <%= f.submit %>
