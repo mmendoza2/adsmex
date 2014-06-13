@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140611143810) do
+ActiveRecord::Schema.define(version: 20140613153018) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -283,6 +283,16 @@ ActiveRecord::Schema.define(version: 20140611143810) do
     t.datetime "updated_at"
   end
 
+  create_table "metodologias", force: true do |t|
+    t.string   "name"
+    t.text     "descripcion"
+    t.string   "slug"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "metodologias", ["slug"], name: "index_metodologias_on_slug", using: :btree
+
   create_table "microposts", force: true do |t|
     t.string   "content"
     t.integer  "user_id"
@@ -328,6 +338,16 @@ ActiveRecord::Schema.define(version: 20140611143810) do
   end
 
   add_index "micrositios", ["slug"], name: "index_micrositios_on_slug", using: :btree
+
+  create_table "productos", force: true do |t|
+    t.string   "name"
+    t.text     "descripcion"
+    t.string   "slug"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "productos", ["slug"], name: "index_productos_on_slug", using: :btree
 
   create_table "relacionarchivos", force: true do |t|
     t.integer "user_id"

@@ -1,6 +1,10 @@
 AdsMex::Application.routes.draw do
 
 
+  resources :metodologias
+
+  resources :productos
+
   resources :archivos
 
   resources :cursos
@@ -17,6 +21,7 @@ AdsMex::Application.routes.draw do
   match '/users/seleccionusuarios',    to: 'users#editusuarios',    via: 'get'
   match '/index',    to: 'adsmex#index',    via: 'get'
   match '/productos',    to: 'adsmex#productos',    via: 'get'
+  match '/qda',    to: 'adsmex#qda',    via: 'get'
   match '/places',    to: 'adsmex#places',    via: 'get'
   match '/zwopa',    to: 'adsmex#zwopa',    via: 'get'
   match '/terminos',    to: 'adsmex#terminos',    via: 'get'

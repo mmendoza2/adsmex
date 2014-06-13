@@ -18,6 +18,7 @@
    inflect.irregular 'archivo', 'archivos'
    inflect.irregular 'relacionarchivo', 'relacionarchivos'
    inflect.irregular 'contact', 'contacts'
+   inflect.irregular 'metodologia', 'metodologias'
 
  end
 

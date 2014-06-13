@@ -8,6 +8,9 @@ class AdsmexController < ApplicationController
   def productos
   end
 
+  def qda
+  end
+
 
   def nosotros
   end

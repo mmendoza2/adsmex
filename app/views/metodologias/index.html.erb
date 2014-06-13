@@ -1,0 +1,26 @@
+
+<div class="col-md-12 col-sm-12 col-xs-12" style="background-color: #e6e6e5" >
+
+  <div class="row" style="background-color: #ffffff; padding: 40px; margin-right: -10px;">
+    <%=	 render "metodologias/titulo" %>
+    <div class="row">
+      <div class="col-md-12">
+        <h2 class="subtitulos"> Todas las metodologías</h2>
+        <div class="col-md-6">
+          <ul class="nav"  style="font-size: 16px; color: #808080">
+            <% @metodologias.each do |x| %>
+                <li> <%=	 link_to x.name, x %>  </li>
+
+            <%	 end %>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+    <hr class="linea">
+
+
+
+
+  </div>
+</div>
