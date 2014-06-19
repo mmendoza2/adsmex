@@ -3,6 +3,9 @@ class AdsmexController < ApplicationController
 
   def home
       @users = User.all
+      @productos = Producto.all
+      @metodologias = Metodologia.all
+
   end
 
   def productos

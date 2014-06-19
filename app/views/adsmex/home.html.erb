@@ -71,24 +71,26 @@
 
 <div class="col-md-6 col-sm-6 col-xs-12" style="background-color: #e6e6e5" >
   <div class="row cuadrohome" style=" margin-left: -10px;">
-    <h2><%=	 link_to "Nuestros", nosotros_path %></h2>
-    <h1><%=	 link_to "PRODUCTOS", nosotros_path %> </h1>
+    <h2><%=	 link_to "Nuestros", productos_path %></h2>
+    <h1><%=	 link_to "PRODUCTOS", productos_path %> </h1>
     <hr>
     <div class="row" style="height: 60px">
-      <div class="col-md-6">
-          <ul class="nav"  style="font-size: 16px; color: #808080">
-            <li> QDA </li>
-            <li> 600 Data Collector</li>
-            <li> Gage interfaces </li>
-          </ul>
-      </div>
-      <div class="col-md-6">
-          <ul class="nav"  style="font-size: 16px; color: #808080">
-              <li> Measurement Systems </li>
-              <li> Proces Interfaces </li>
-              <li> More ... </li>
-          </ul>
-    </div>
+       <%	 @productos.first(4).each do |x| %>
+          <div class="col-md-6">
+              <ul class="nav"  style="font-size: 16px; color: #808080">
+                <li> <%=	link_to x.name, x %> </li>
+
+              </ul>
+          </div>
+       <% end %>
+      <%	 @productos.last(4).each do |x| %>
+          <div class="col-md-6">
+            <ul class="nav"  style="font-size: 16px; color: #808080">
+              <li> <%=	link_to x.name, x %> </li>
+
+            </ul>
+          </div>
+      <% end %>
       <div class="col-md-2 col-xs-2 btn-warning" style="border-radius: 8px; margin-left: 10px">
         <%=	 link_to "Ver más", nosotros_path, class: "blanco" %>
       </div>
@@ -100,15 +102,26 @@
     </div>
   </div>
   <div class="row cuadrohome" style=" margin-left: -10px; margin-top: 10px  ">
-    <h2><%=	 link_to "Metodologías", nosotros_path %></h2>
-    <h1><%=	 link_to "6 SIGMA", nosotros_path %> </h1>
+    <h2><%=	 link_to "Metodologías", metodologias_path %></h2>
+    <h1><%=	 link_to "6 SIGMA", metodologias_path %> </h1>
     <hr>
     <div class="row" style="height: 60px">
-      <ul class="nav"  style="font-size: 16px; color: #808080">
-        <li> DMAIC</li>
-        <li> APQP</li>
-        <li> SPC</li>
-      </ul>
+      <%	 @metodologias.first(4).each do |x| %>
+          <div class="col-md-6">
+            <ul class="nav"  style="font-size: 16px; color: #808080">
+              <li> <%=	link_to x.name, x %> </li>
+
+            </ul>
+          </div>
+      <% end %>
+      <%	 @metodologias.last(4).each do |x| %>
+          <div class="col-md-6">
+            <ul class="nav"  style="font-size: 16px; color: #808080">
+              <li> <%=	link_to x.name, x %> </li>
+
+            </ul>
+          </div>
+      <% end %>
       <div class="col-md-2 col-xs-2 btn-warning" style="border-radius: 8px; margin-left: 10px">
         <%=	 link_to "Ver más", nosotros_path, class: "blanco" %>
       </div>
