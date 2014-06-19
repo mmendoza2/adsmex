@@ -2,8 +2,10 @@
   <%= f.error_notification %>
 
     <div class="form-inputs">
+      <%= f.label :name %>
       <%= f.text_field :name %>
-      <%= f.text_field :descripcion %>
+      <%= f.label :descripcion %>
+      <%= f.text_area :descripcion %>
     </div>
 
     <div class="form-actions">
