@@ -7,30 +7,38 @@
 <% else %>
 
 <div class="col-md-6 col-sm-6 col-xs-12" style="background-color: #e6e6e5" >
-      <div class="row" style="height: 400px; background-color: #ffffff; padding: 30px; margin-right: -10px;">
+      <div class="row cuadrohome" >
         <h2><%=	 link_to "Sobre", nosotros_path %></h2>
         <h1><%=	 link_to "NOSOTROS", nosotros_path %> </h1>
         <hr>
-        <div class="row" style="height: 60px">
+        <div class="row" style="height: 60px; z-index: 2">
             <ul class="nav " style="font-size: 16px; color: #808080">
               <li> Nuestra historia</li>
               <li> Misión y Visión</li>
             </ul>
+          <div class="col-md-2 col-xs-2 btn-warning" style="border-radius: 8px; margin-left: 10px">
+            <%=	 link_to "Ver más", nosotros_path, class: "blanco" %>
+          </div>
         </div>
-        <div class="row">
+        <div class="row" style="z-index: 2">
           <div class="col-md-offset-3">
           <%=  image_tag "https://s3.amazonaws.com/adsmex/nosotrosimg.png", class: "imageneshome" %>
           </div>
         </div>
       </div>
-      <div class="row" style="height: 400px; background-color: #ffffff; padding: 30px; margin-right: -10px; margin-top: 10px  ">
+      <div class="row cuadrohome" style=" margin-right: -10px; margin-top: 10px  ">
         <h2><%=	 link_to "REALIDAD", nosotros_path %></h2>
         <h1><%=	 link_to "AUMENTADA", nosotros_path %> </h1>
 
           <hr>
           <div class="row" style="height: 60px">
-           <p> La realidad aumentada es...</p>
+           <p style="font-size: 16px; color: #808080"> La realidad aumentada es...</p>
+
           </div>
+        <div class="col-md-2 col-xs-2 btn-warning" style="border-radius: 8px; margin-left: 10px; margin-top: -20px">
+          <%=	 link_to "Ver más", nosotros_path, class: "blanco" %>
+        </div>
+
           <div class="row">
             <div class="col-md-offset-3">
               <%=  image_tag "https://s3.amazonaws.com/adsmex/Productos+-02.png", class: "imageneshome" %>
@@ -38,7 +46,7 @@
           </div>
       </div>
 
-      <div class="row" style="height: 379px; background-color: #ffffff; padding: 30px; margin-right: -10px; margin-top: 10px  ">
+      <div class="row cuadrohome" style="height: 379px; margin-right: -10px; margin-top: 10px"  >
         <h2><%=	 link_to "Conoce", nosotros_path %></h2>
         <div style="margin: -20px"><%= link_to image_tag("https://s3.amazonaws.com/adsmex/Nordlock-05.png"), nosotros_path %> </div>
           <hr>
@@ -47,6 +55,9 @@
               <li> Aplicaciones </li>
               <li> Productos </li>
             </ul>
+            <div class="col-md-2 col-xs-2 btn-warning" style="border-radius: 8px; margin-left: 10px">
+              <%=	 link_to "Ver más", nosotros_path, class: "blanco" %>
+            </div>
           </div>
           <div class="row" >
             <div class="col-md-offset-6" >
@@ -59,7 +70,7 @@
 
 
 <div class="col-md-6 col-sm-6 col-xs-12" style="background-color: #e6e6e5" >
-  <div class="row" style="height: 400px; background-color: #ffffff; padding: 30px; margin-left: -10px;">
+  <div class="row cuadrohome" style=" margin-left: -10px;">
     <h2><%=	 link_to "Nuestros", nosotros_path %></h2>
     <h1><%=	 link_to "PRODUCTOS", nosotros_path %> </h1>
     <hr>
@@ -78,6 +89,9 @@
               <li> More ... </li>
           </ul>
     </div>
+      <div class="col-md-2 col-xs-2 btn-warning" style="border-radius: 8px; margin-left: 10px">
+        <%=	 link_to "Ver más", nosotros_path, class: "blanco" %>
+      </div>
     </div>
     <div class="row">
       <div class="col-md-offset-3">
@@ -85,7 +99,7 @@
       </div>
     </div>
   </div>
-  <div class="row" style="height: 400px; background-color: #ffffff; padding: 30px; margin-left: -10px; margin-top: 10px  ">
+  <div class="row cuadrohome" style=" margin-left: -10px; margin-top: 10px  ">
     <h2><%=	 link_to "Metodologías", nosotros_path %></h2>
     <h1><%=	 link_to "6 SIGMA", nosotros_path %> </h1>
     <hr>
@@ -95,6 +109,9 @@
         <li> APQP</li>
         <li> SPC</li>
       </ul>
+      <div class="col-md-2 col-xs-2 btn-warning" style="border-radius: 8px; margin-left: 10px">
+        <%=	 link_to "Ver más", nosotros_path, class: "blanco" %>
+      </div>
     </div>
     <div class="row">
       <div class="col-md-offset-3">
@@ -112,6 +129,18 @@
   </div>
 </div>
 
+<div class="col-md-12">
+  <div class="row" style="margin-top: 10px; background-color: #ffffff">
+    <div class="row img-responsive" style=" margin-left: 30px; margin-top: 20px ; margin-bottom: 20px ">
 
+        <h2 class="titulocolor">  MAPA GRÁFICO DE</h2>
+        <h1 class="titulocolor"> AUTOMATED DATA SYSTEMS </h1>
+    </div>
+     <div style="margin-bottom: 40px">
+       <%=  image_tag "https://s3.amazonaws.com/adsmex/ads-qda-mapa.jpg", class: "img-responsive" %>
+     </div>
+
+  </div>
+</div>
 
 <% end %>

@@ -1,29 +1,35 @@
 <div class="navbar " role="navigation" style="margin-top: -55px; background-color: #f6f5f5">
-      <div class=" col-md-2">
-        <%=	 link_to image_tag("https://s3.amazonaws.com/adsmex/logoads1.png"), root_path, class: "logohome" %>
+
+      <div class="col-md-12">
+      <div class="row" style="margin-top: 10px; margin-bottom: 0px">
+          <div class=" col-md-2">
+            <%=	 link_to image_tag("https://s3.amazonaws.com/adsmex/logoads1.png"), root_path, class: "logohome" %>
+          </div>
+          <div class="col-md-10" >
+            <div class="row" style="padding-top: 20px">
+                <div class="row" >
+                  <div class="col-md-5 col-md-offset-7" >
+                        <p> Bienvenido a Nuestro Portal, &nbsp;&nbsp;&nbsp;&nbsp;
+                          <%= link_to "Ingresa aquí", new_user_path %></p>
+                  </div>
+                </div>
+                <div class="row">
+                  <nav class="col-md-8 col-md-offset-4">
+                      <ul class="list-inline" style="padding-top: 10px; font-size: 16px;">
+                        <li><%= link_to "Nosotros ", nosotros_path %></li>
+                        <li><%= link_to "Productos ", productos_path %></li>
+                        <li><%= link_to "Metodologías ", metodologias_path %></li>
+                        <li><%= link_to "Realidad Aumentada ", new_user_path %></li>
+                        <li><%= link_to "Contacto ", contacto_path %></li>
+                      </ul>
+                  </nav>
+                </div>
+            </div>
+          </div>
+      </div>
       </div>
 
-      <div class="col-md-10">
-        <div class="row">
-          <nav class="pull-right" >
-            <ul class="nav" style="padding-top: 5px">
-                    <li><%= link_to "Ingresar ", new_user_path %></li>
-            </ul>
-          </nav>
-        </div>
-        <div class="row">
-          <nav class="pull-right">
-              <ul class="list-inline" style="padding-top: 10px; font-size: 16px;">
-                <li><%= link_to "Nosotros ", nosotros_path %></li>
-                <li><%= link_to "Productos ", productos_path %></li>
-                <li><%= link_to "Metodologías ", metodologias_path %></li>
-                <li><%= link_to "Realidad Aumentada ", new_user_path %></li>
-                <li><%= link_to "Contacto ", contacto_path %></li>
-              </ul>
-          </nav>
-        </div>
-      </div>
-  <hr class="linea">
+  <hr class="linea" st>
 
 </div>
 

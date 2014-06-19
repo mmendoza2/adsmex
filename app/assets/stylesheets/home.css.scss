@@ -8,6 +8,12 @@
   margin: 10px;
 }
 
+.posterhome{
+  width: auto;
+  height: auto;
+  margin: 10px;
+}
+
 .logohome{
   width: 130px;
   height: 70px;
@@ -15,6 +21,10 @@
   margin-left: 20px;
   margin-top: 10px;
 
+}
+
+.titulocolor {
+  color: #4c73a2;
 }
 
 .titulos {
@@ -31,6 +41,10 @@
   color: #ffffff;
 }
 
+.blanco:hover{
+  color: #ffffff;
+}
+
 .linea {
   border: 1px solid #dddddd;
   margin: 10px;
@@ -41,11 +55,29 @@
 
 }
 
-
-
 .lineaizquierda {
   border-left: 1px solid #dddddd;
 
 }
+
+
+.cuadrohome{
+  height: 400px;
+  background-color: #ffffff;
+  padding: 30px;
+  margin-right: -10px;
+  z-index: 1;
+}
+
+.cuadrohome:hover{
+  height: 400px;
+  opacity: .9;
+  padding: 30px;
+  margin-right: -10px;
+
+  z-index: 3;
+
+}
+
 
 
