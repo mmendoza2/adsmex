@@ -1,0 +1,25 @@
+<h1>Listing subproductos</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @subproductos.each do |subproducto| %>
+      <tr>
+        <td><%= link_to 'Show', subproducto %></td>
+        <td><%= link_to 'Edit', edit_subproducto_path(subproducto) %></td>
+        <td><%= link_to 'Destroy', subproducto, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Subproducto', new_subproducto_path %>

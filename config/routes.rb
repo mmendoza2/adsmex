@@ -1,6 +1,8 @@
 AdsMex::Application.routes.draw do
 
 
+  resources :subproductos
+
   resources :metodologias
 
   resources :productos
