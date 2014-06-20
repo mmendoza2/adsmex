@@ -1,4 +1,39 @@
-<p id="notice"><%= notice %></p>
+
+
+
+<div class="col-md-12 col-sm-12 col-xs-12" style="background-color: #e6e6e5" >
+
+  <div class="row" style="background-color: #ffffff; padding: 40px; margin-right: -10px;">
+    <%=	 render "productos/titulo" %>
+    <div class="row">
+      <div class="col-md-12">
+        <h2 class="subtitulos"> <%=	 @producto.name %> </h2>
+
+
+        <div class="col-md-6">
+           <div class="row" style="margin-top: 40px">
+            <p> <%=	 @producto.descripcion %> </p>
+           </div>
+        </div>
+
+
+        <div class="col-md-6">
+          <div class="row" style="margin-top: 40px">
+            <p> <%=	image_tag @producto.photo.url(:big) %> </p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+    <hr class="linea">
+
+
+
+
+  </div>
+</div>
+
+
 
 <%= link_to 'Edit', edit_producto_path(@producto) %> |
 <%= link_to 'Back', productos_path %>

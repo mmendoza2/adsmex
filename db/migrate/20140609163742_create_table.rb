@@ -16,4 +16,5 @@ class CreateTable < ActiveRecord::Migration
       t.timestamp "arvhivo_updated_at"
     end
   end
+
 end
