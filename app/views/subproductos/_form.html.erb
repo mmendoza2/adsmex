@@ -5,7 +5,7 @@
 
 
       <%= f.label :producto %>
-      <%= f.collection_select :producto, Producto.all, :id, :name %>
+      <%= f.collection_select :producto_id, Producto.all, :id, :name %>
 
       <%= f.label :name %>
       <%= f.text_field :name %>
