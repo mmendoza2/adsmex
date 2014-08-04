@@ -1,4 +1,35 @@
-<p id="notice"><%= notice %></p>
 
-<%= link_to 'Edit', edit_subproducto_path(@subproducto) %> |
-<%= link_to 'Back', subproductos_path %>
+
+
+<div class="col-md-12 col-sm-12 col-xs-12" style="background-color: #e6e6e5" >
+
+  <div class="row" style="background-color: #ffffff; padding: 40px; margin-right: -10px;">
+    <%=	 render "productos/titulo" %>
+    <div class="row">
+      <div class="col-md-12">
+        <h2 class="subtitulos"> <%=	 @subproducto.name %> </h2>
+
+
+        <div class="col-md-6">
+          <div class="row" style="margin-top: 40px">
+            <p> <%=	 @subproducto.descripcion %> </p>
+          </div>
+        </div>
+
+
+        <div class="col-md-6">
+          <div class="row" style="margin-top: 40px">
+            <p> <%=	image_tag @subproducto.photo.url(:big) %> </p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+    <hr class="linea">
+
+
+
+
+  </div>
+</div>
+
