@@ -3,15 +3,12 @@
   <head>
    <%=	 render "layouts/header" %>
   </head>
-
-
 <% if signed_in? %>
     <body style="background-color: #e6e6e5">
         <div id="wrapper">
           <%= render 'layouts/sidebar' %>
           <!-- Page content -->
           <div id="page-content-wrapper">
-
             <div class="hidden-xs">
               <%= render 'layouts/topbar' %>
             </div>
@@ -20,8 +17,6 @@
             </div>
             <!-- Keep all page content within the page-content inset div! -->
             <div class="page-content inset">
-
-
               <div class="col-md-12 col-sm-12 col-lg-12">
                 <div class="col-sm-offset-1 col-sm-10 col-xs-10" style="margin-top: 5px; margin-bottom: 5px">
                   <% [:notice, :error, :alert].each do |level| %>
@@ -33,9 +28,7 @@
                       <% end %>
                   <% end %>
                 </div>
-
                 <%= yield %>
-
               </div>
             </div>
           </div>
@@ -51,7 +44,6 @@
     <body style="background-color: #e6e6e5">
         <!-- Page content -->
         <div class="container">
-
           <div class="hidden-xs">
             <%= render 'layouts/topbarlo' %>
           </div>
@@ -74,8 +66,4 @@
         </div>
     </body>
 <%  end %>
-
-
-
-
 </html>
