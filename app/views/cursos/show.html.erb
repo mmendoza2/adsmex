@@ -1,4 +1,22 @@
-<div class="col-md-12">
+<div class="col-md-6" style="margin-top: 10px; margin-bottom: 20px">
+  <h2 style="margin-bottom: 20px">Expertos en el tema</h2>
+  <%	 @user.each do |x| %>
+     <%	 x.cursosusuario.each do |t| %>
+
+         <%	 if t.curso_id == @curso.id  %>
+              <%	 if t.nivel32014 == true  %>
+
+              <li class="glyphicon-list">  <%= link_to x.name, x %></li>
+
+
+              <%	 else %>
+              <%	 end %>
+         <%	 else %>
+         <%	end %>
+
+     <%	 end %>
+  <%	 end %>
+  <hr/>
 
 </div>
 
@@ -32,25 +50,39 @@
 
 </div>
 
-<div class="col-md-4 ">
+    <%	 current_user.cursosusuario.each do |t| %>
 
-<%= form_for(@curso.archivos.new, :html => { :multipart => true }) do |f|  %>
-    <%= render 'shared/error_messages', object: f.object %>
+        <%	 if t.curso_id == @curso.id  %>
+            <%	 if t.nivel32014 == true  %>
+            <div class="col-md-4 ">
 
-    <%= f.label :name %>
-    <%= f.text_field :name %>
+              <%= form_for(@curso.archivos.new, :html => { :multipart => true }) do |f|  %>
+                  <%= render 'shared/error_messages', object: f.object %>
 
-    <%= f.label :descripcion %>
-    <%= f.text_area :descripcion %>
+                  <%= f.label :name %>
+                  <%= f.text_field :name %>
 
-    <%= f.label :archivo %>
-    <%= f.file_field :archivo %>
+                  <%= f.label :descripcion %>
+                  <%= f.text_area :descripcion %>
 
-    <%= f.hidden_field :curso_id, :value => @curso.id %>
+                  <%= f.label :archivo %>
+                  <%= f.file_field :archivo %>
 
-    <div class="actions">
-      <%= f.submit %>
-    </div>
-<% end %>
-</div>
+                  <%= f.hidden_field :curso_id, :value => @curso.id %>
+
+                  <div class="actions">
+                    <%= f.submit %>
+                  </div>
+              <% end %>
+            </div>
+
+
+
+            <%	 else %>
+            <%	 end %>
+        <%	 else %>
+        <%	end %>
+
+    <%	 end %>
+
 

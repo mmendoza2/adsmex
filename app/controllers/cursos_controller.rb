@@ -11,6 +11,7 @@ class CursosController < ApplicationController
   # GET /cursos/1.json
   def show
     @curso = Curso.friendly.find(params[:id])
+    @user = User.all
   end
 
   # GET /cursos/new
