@@ -9,6 +9,12 @@
 
     <%= f.label :imagen %>
     <%= f.file_field :photo %>
+
+    <%= f.label :video %>
+    <%= f.text_field :video %>
+
+    <p> ** Para el video solo copia el último código de la URL como se muestra en la imagen siguiente</p>
+    <%=	 image_tag "http://adsmex.s3.amazonaws.com/videoyt.png" %>
   </div>
 
   <div class="form-actions">

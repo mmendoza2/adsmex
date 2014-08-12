@@ -1,6 +1,7 @@
 
 
 
+
 <div class="col-md-12 col-sm-12 col-xs-12" style="background-color: #e6e6e5" >
 
   <div class="row" style="background-color: #ffffff; padding: 40px; margin-right: -10px;">
@@ -12,14 +13,19 @@
 
         <div class="col-md-6">
           <div class="row" style="margin-top: 40px">
-            <p> <%=	 @subproducto.descripcion %> </p>
+            <p> <%=	 @subproducto.descripcion.html_safe %> </p>
           </div>
         </div>
 
 
         <div class="col-md-6">
+          <div class="row col-md-offset-1" style="margin-top: 40px">
+
+            <iframe width="400" height="215" src="//www.youtube.com/embed/O89P-wTQv9A" frameborder="0" allowfullscreen></iframe>
+            <p> <%=	@subproducto.video  %> </p>
+          </div>
           <div class="row" style="margin-top: 40px">
-            <p> <%=	image_tag @subproducto.photo.url(:big) %> </p>
+            <p> <%=	image_tag @subproducto.photo.url(:medium) %> </p>
           </div>
         </div>
 
@@ -32,4 +38,3 @@
 
   </div>
 </div>
-

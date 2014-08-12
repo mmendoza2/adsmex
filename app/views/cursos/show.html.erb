@@ -1,11 +1,13 @@
+<div class="col-md-12">
+
+</div>
 
 
-<div class="col-md-8">
+<div class="col-md-8 small">
   <table class="table table-hover">
     <tr>
       <th> <%= link_to "Nombre", :sort => "Name" %>  </th>
       <th> <%= link_to "Subido por:", :sort => "Subido por:" %>  </th>
-      <th> <%= link_to "Terminación", :sort => "Terminación" %>  </th>
       <th> <%= link_to "Tamaño", :sort => "archivo_file_size" %>  </th>
       <th> <%= link_to "fecha", :sort => "fecha" %>  </th>
       <th> <%= link_to "Archivo", :sort => "Archivo" %>  </th>
@@ -15,10 +17,9 @@
         <tr>
           <td> <%= x.name	  %></td>
           <td> <%= x.user.name %></td>
-          <td> <%= x.archivo_content_type %></td>
-          <td> <%= x.archivo_file_size %></td>
-          <td> <%= x.archivo_updated_at %></td>
-          <td>   <%= link_to "Bajar", x.archivo.url(:original, false) %></td>
+          <td> <%= number_to_human(x.archivo_file_size, units: {unit: "b", thousand: "Kb"}) %></td>
+          <td> <%= x.archivo_updated_at.time.to_formatted_s(:short) %></td>
+          <td>   <%= link_to  x.archivo_content_type, x.archivo.url(:original, false) %></td>
            <%	 if x.user_id == current_user.id %>
           <td>   <%= link_to "Eliminar", x, method: :delete, data: { confirm: 'Are you sure?' } %></td>
 
@@ -52,3 +53,4 @@
     </div>
 <% end %>
 </div>
+

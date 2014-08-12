@@ -1,0 +1,9 @@
+
+<h3>hola</h3>
+<p>Estás recibiendo este correo debido a que se ha actualizado el curso <%= @archivo.curso.name %> que estás tomando</p>
+
+<p>El usuario <%= @archivo.user.name %></p>
+<p>subió el archivo <%= @archivo.name %></p>
+
+
+<%= curso_url(@archivo.curso) %>

@@ -1,81 +1,13 @@
 <!DOCTYPE html>
 <html>
-  <head>
-   <%=	 render "layouts/header" %>
-  </head>
+<head>
+  <%=	 render "layouts/header2" %>
+</head>
 
+<body>
 
-<% if signed_in? %>
-    <body style="background-color: #e6e6e5">
-        <div id="wrapper">
-          <%= render 'layouts/sidebar' %>
-          <!-- Page content -->
-          <div id="page-content-wrapper">
+<%=	 render "layouts/bodyapp" %>
 
-            <div class="hidden-xs">
-              <%= render 'layouts/topbar' %>
-            </div>
-            <div class="visible-xs">
-              <a id="menu-toggle" href="#" class="btn btn-default"><i class="icon-reorder"></i></a>
-            </div>
-            <!-- Keep all page content within the page-content inset div! -->
-            <div class="page-content inset">
-
-
-              <div class="col-md-12 col-sm-12 col-lg-12">
-                <div class="col-sm-offset-1 col-sm-10 col-xs-10" style="margin-top: 5px; margin-bottom: 5px">
-                  <% [:notice, :error, :alert].each do |level| %>
-                      <% unless flash[level].blank? %>
-                          <div data-alert="alert" class="alert-message <%= flash_class(level) %> fade in">
-                            <a class="close" href="#">×</a>
-                            <%= content_tag :p, flash[level] %>
-                          </div>
-                      <% end %>
-                  <% end %>
-                </div>
-
-                <%= yield %>
-
-              </div>
-            </div>
-          </div>
-        </div>
-        <script>
-            $("#menu-toggle").click(function(e) {
-                e.preventDefault();
-                $("#wrapper").toggleClass("active");
-            });
-        </script>
-    </body>
-<%  else %>
-    <body style="background-color: #e6e6e5">
-        <!-- Page content -->
-        <div class="container">
-
-          <div class="hidden-xs">
-            <%= render 'layouts/topbarlo' %>
-          </div>
-          <div class="visible-xs">
-            <a id="menu-toggle" href="#" class="btn btn-default"><i class="icon-reorder"></i></a>
-          </div>
-          <!-- Keep all page content within the page-content inset div! -->
-          <div class="col-sm-offset-1 col-sm-10 col-xs-10" style="margin-top: 5px; margin-bottom: 5px">
-            <% [:notice, :error, :alert].each do |level| %>
-                <% unless flash[level].blank? %>
-                    <div data-alert="alert" class="alert-message <%= flash_class(level) %> fade in">
-                      <a class="close" href="#">×</a>
-                      <%= content_tag :p, flash[level] %>
-                    </div>
-                <% end %>
-            <% end %>
-          </div>
-          <%= yield %>
-          <%= render "layouts/footer" %>
-        </div>
-    </body>
-<%  end %>
-
-
-
-
+</body>
 </html>
+

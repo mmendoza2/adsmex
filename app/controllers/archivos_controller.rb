@@ -26,10 +26,11 @@ class ArchivosController < ApplicationController
   # POST /archivos
   # POST /archivos.json
   def create
-    @curso = Curso.new(params[:curso])
+    @user = User.all
     @archivo = current_user.archivos.build(archivo_params)
     respond_to do |format|
       if @archivo.save
+        ArchivoMailer.archivo_new(@user, @archivo).deliver
         format.html { redirect_to :back, notice: 'Archivo was successfully created.' }
         format.json { render action: 'show', status: :created, location: :back }
       else
