@@ -11,6 +11,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.friendly.find(params[:id])
+    @users = User.all
     @microposts = @user.microposts.paginate(page: params[:page])
     @eventos = @user.eventos.paginate(page: params[:page])
     @micrositios = @user.micrositios.paginate(page: params[:page])
