@@ -8,12 +8,10 @@ class AdsmexController < ApplicationController
 
   end
 
-  def productos
-  end
+
 
   def qda
   end
-
 
   def nosotros
   end
@@ -24,8 +22,7 @@ class AdsmexController < ApplicationController
   def terminos
   end
 
-  def instrucciones
-    @actividades = Actividad.all
+  def realidad_aumentada
   end
 
   def places

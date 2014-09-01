@@ -29,12 +29,8 @@ AdsMex::Application.routes.draw do
   match '/terminos',    to: 'adsmex#terminos',    via: 'get'
   match '/nosotros',   to: 'adsmex#nosotros',   via: 'get'
   match '/contacto', to: 'adsmex#contacto', via: 'get'
-  match '/instrucciones', to: 'adsmex#instrucciones', via: 'get'
-  match '/micrositios', to: 'micrositios#index', via: 'get'
-  match '/categorias/social', to: 'categorias#show', defaults: {:id => '1'}, via: 'get'
-  match '/categorias/ecoturismo', to: 'categorias#show', defaults: {:id => '3'}, via: 'get'
-  match '/categorias/alternativo', to: 'categorias#show', defaults: {:id => '4'}, via: 'get'
-  match '/categorias/turismo', to: 'categorias#show', defaults: {:id => '2'}, via: 'get'
+  match '/realidad_aumentada', to: 'adsmex#realidad_aumentada', via: 'get'
+
 
 
   resources :users do
