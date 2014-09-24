@@ -8,16 +8,16 @@
 
 <div class="col-md-6 col-sm-6 col-xs-12" style="background-color: #e6e6e5; margin-bottom: 10px" >
       <div class="row cuadrohome" >
-        <h2><%=	 link_to "Sobre", nosotros_path %></h2>
-        <h1><%=	 link_to "NOSOTROS", nosotros_path %> </h1>
+        <h2><%=	 link_to "OUR", nosotros_path %></h2>
+        <h1><%=	 link_to "COMPANY", nosotros_path %> </h1>
         <hr>
         <div class="row" style="height: 60px; z-index: 2">
             <ul class="nav " style="font-size: 16px; color: #808080">
-              <li> Nuestra historia</li>
-              <li> Misión y Visión</li>
+              <li> ADS History</li>
+              <li> Mission & Vision</li>
             </ul>
           <div class="col-md-2 col-xs-2 btn-warning" style="border-radius: 8px; margin-left: 10px">
-            <%=	 link_to "Ver más", nosotros_path, class: "blanco" %>
+            <%=	 link_to "More ->", nosotros_path, class: "blanco" %>
           </div>
         </div>
         <div class="row" style="z-index: 2">
@@ -27,16 +27,16 @@
         </div>
       </div>
       <div class="row cuadrohome" style=" margin-right: -10px; margin-top: 10px  ">
-        <h2><%=	 link_to "REALIDAD", realidad_aumentada_path %></h2>
-        <h1><%=	 link_to "AUMENTADA", realidad_aumentada_path %> </h1>
+        <h2><%=	 link_to "AUGMENTED", realidad_aumentada_path %></h2>
+        <h1><%=	 link_to "REALITY", realidad_aumentada_path %> </h1>
 
           <hr>
         <ul class="nav " style="font-size: 16px; color: #808080">
           <li>Used to optimize maintenance processes          </li>
-          <li> Reduction in time and resources during training of personnel       </li>
+          <li> Reduction in time and resOURces during training of personnel       </li>
         </ul>
-        <div class="col-md-2 col-xs-2 btn-warning" style="border-radius: 8px; margin-left: 10px; ">
-          <%=	 link_to "Ver más", realidad_aumentada_path , class: "blanco" %>
+        <div class="col-md-2 col-xs-2 btn-warning" style="border-radius: 8px; margin-left: 10px;">
+          <%=	 link_to "More ->", realidad_aumentada_path , class: "blanco" %>
         </div>
 
           <div class="row">
@@ -47,16 +47,16 @@
       </div>
 
       <div class="row cuadrohome" style="height: 379px; margin-right: -10px; margin-top: 10px"  >
-        <h2><%=	 link_to "Conoce", "http://adsmex.com/nordlock/" %></h2>
+        <h2><%=	 link_to "WEDGE LOCKING SOLUTIONS", "http://adsmex.com/nordlock/" %></h2>
         <div style="margin: -20px"><%= link_to image_tag("https://s3.amazonaws.com/adsmex/Nordlock-05.png"), "http://adsmex.com/nordlock/" %> </div>
           <hr>
           <div class="row" style="height: 25px">
             <ul class="nav"  style="font-size: 16px; color: #808080">
-              <li> Aplicaciones </li>
-              <li> Productos </li>
+              <li> Applications </li>
+              <li> Dimensions </li>
             </ul>
             <div class="col-md-2 col-xs-2 btn-warning" style="border-radius: 8px; margin-left: 10px">
-              <%=	 link_to "Ver más", "http://adsmex.com/nordlock/", class: "blanco" %>
+              <%=	 link_to "More ->", "http://adsmex.com/nordlock/", class: "blanco" %>
             </div>
           </div>
           <div class="row" >
@@ -71,8 +71,8 @@
 
 <div class="col-md-6 col-sm-6 col-xs-12" style="background-color: #e6e6e5" >
   <div class="row cuadrohome" style=" margin-left: -10px;">
-    <h2><%=	 link_to "Nuestros", productos_path %></h2>
-    <h1><%=	 link_to "PRODUCTOS", productos_path %> </h1>
+    <h2><%=	 link_to "OUR", productos_path %></h2>
+    <h1><%=	 link_to "PRODUCTS", productos_path %> </h1>
     <hr>
     <div class="row" style="height: 60px">
        <%	 @productos.first(2).each do |x| %>
@@ -92,7 +92,7 @@
           </div>
       <% end %>
       <div class="col-md-2 col-xs-2 btn-warning" style="border-radius: 8px; margin-left: 10px">
-        <%=	 link_to "Ver más", nosotros_path, class: "blanco" %>
+        <%=	 link_to "More ->", nosotros_path, class: "blanco" %>
       </div>
     </div>
     <div class="row">
@@ -102,8 +102,8 @@
     </div>
   </div>
   <div class="row cuadrohome" style=" margin-left: -10px; margin-top: 10px  ">
-    <h2><%=	 link_to "Metodologías", metodologias_path %></h2>
-    <h1><%=	 link_to "6 SIGMA", metodologias_path %> </h1>
+    <h2><%=	 link_to "6 SIGMA ", metodologias_path %></h2>
+    <h1><%=	 link_to "METHODOLOGIES", metodologias_path %> </h1>
     <hr>
     <div class="row" style="height: 60px">
       <%	 @metodologias.first(4).each do |x| %>
@@ -123,7 +123,7 @@
           </div>
       <% end %>
       <div class="col-md-2 col-xs-2 btn-warning" style="border-radius: 8px; margin-left: 10px">
-        <%=	 link_to "Ver más", nosotros_path, class: "blanco" %>
+        <%=	 link_to "More ->", nosotros_path, class: "blanco" %>
       </div>
     </div>
     <div class="row">
@@ -134,7 +134,7 @@
   </div>
 
   <div class="row" style="height: 379px; background-color: #4c73a2; padding: 30px; margin-left: -10px; margin-top: 10px  ">
-    <h2 > <%=	 link_to "Contacto", nosotros_path, class: "blanco" %></h2>
+    <h2 > <%=	 link_to "Contact", nosotros_path, class: "blanco" %></h2>
 
     <%=	 render 'shared/new', :@contact => Contact.new %>
 

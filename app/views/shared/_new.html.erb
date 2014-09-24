@@ -7,16 +7,16 @@
 <%= form_for @contact, :url => contacts_path  do |f|  %>
     <%= render 'shared/error_messages', object: f.object %>
 
-    <%= f.text_field :name,   :placeholder => "Nombre", class: 'input-sm' %>
+    <%= f.text_field :name,   :placeholder => "Name", class: 'input-sm' %>
 
     <%= f.text_field :email,   :placeholder => "Email", class: 'input-sm' %>
 
-    <%= f.text_field :empresa,   :placeholder => "Empresa", class: 'input-sm' %>
+    <%= f.text_field :empresa,   :placeholder => "Company", class: 'input-sm' %>
 
-    <%= f.text_area :message,    :placeholder => "¿En qué te podemos ayudar?", class: 'input-sm', :as => :text, :input_html => {:rows => 15} %>
+    <%= f.text_area :message,    :placeholder => "What we can do for you?", class: 'input-sm', :as => :text, :input_html => {:rows => 15} %>
 
     <div class="actions">
-      <div class="col-md-6 col-md-offset-6"><%= f.submit "Enviar", class: "btn header-btn-form" %></div>
+      <div class="col-md-6 col-md-offset-6"><%= f.submit "Send", class: "btn header-btn-form" %></div>
 
     </div>
 <% end %>
