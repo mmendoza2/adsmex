@@ -20,8 +20,8 @@
         <div class="col-md-6">
           <div class="row" style="margin-top: 40px">
 
-            <iframe width="400" height="215" src="//www.youtube.com/embed/O89P-wTQv9A" frameborder="0" allowfullscreen></iframe>
-            <p> <%=	@producto.video  %> </p>
+            <iframe width="450" height="215" src="//www.youtube.com/embed/<%=@producto.video%>" frameborder="0" allowfullscreen></iframe>
+            <p></p>
           </div>
           <div class="row" style="margin-top: 40px">
             <p> <%=	image_tag @producto.photo.url(:big) %> </p>
