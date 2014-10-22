@@ -13,20 +13,9 @@ class ApplicationController < ActionController::Base
   end
 
 
-
   def after_sign_in_path_for(resource)
     @user ||= current_user
-    if @user.followed_actividades.count >= 3
     root_path
-    else
-    root_path
-    end
-
-  end
-
-
-  def categoria
-  @categoria = Categoria.all
   end
 
 

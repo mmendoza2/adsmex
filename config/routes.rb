@@ -1,100 +1,36 @@
 AdsMex::Application.routes.draw do
 
-
   resources :subproductos
-
   resources :metodologias
-
   resources :productos
-
   resources :archivos
-
   resources :cursos
-
   root to: 'adsmex#home'
   devise_for :users, controllers: {omniauth_callbacks: "omniauth_callbacks"}
   match '/users/auth/facebook' => 'devise/omniauth_callbacks#passthru',  via: 'get'
   match 'auth/:provider/callback', to: 'sessions#create',   via: 'get'
   match 'auth/failure', to: redirect('/'),                  via: 'get'
   match '/users/sign_out',    to: 'devise/sessions#destroy',    via: 'post'
-  match '/users/seleccionestados',    to: 'users#editestados',    via: 'get'
-  match '/users/seleccionactividades',    to: 'users#editactividades',    via: 'get'
-  match '/users/seleccionlugares',    to: 'users#editlugares',    via: 'get'
-  match '/users/seleccionusuarios',    to: 'users#editusuarios',    via: 'get'
   match '/index',    to: 'adsmex#index',    via: 'get'
   match '/productos',    to: 'adsmex#productos',    via: 'get'
   match '/qda',    to: 'adsmex#qda',    via: 'get'
-  match '/places',    to: 'adsmex#places',    via: 'get'
-  match '/zwopa',    to: 'adsmex#zwopa',    via: 'get'
   match '/terminos',    to: 'adsmex#terminos',    via: 'get'
   match '/nosotros',   to: 'adsmex#nosotros',   via: 'get'
   match '/contacto', to: 'adsmex#contacto', via: 'get'
   match '/realidad_aumentada', to: 'adsmex#realidad_aumentada', via: 'get'
 
-
-
   resources :users do
     member do
       get :following, :followers
     end
-  end
-  resources :eventos do
-    member do
-      get :following, :followers
-    end
-  end
-  resources :micrositios do
-    member do
-      get :following, :followers
-    end
-  end
-  resources :actividades do
-    member do
-      get :following, :followers
-    end
-  end
-  resources :estados do
-    member do
-      get :following, :followers
-    end
-  end
-  resources :actividadespadre do
-    member do
-      get :following, :followers
-    end
+
   end
 
-  resources :categorias do
-    member do
-      get :following, :followers
-    end
-  end
-
+  resources :cursosusuario
   resources :users
   resources :contacts
-  resources :actividades
-  resources :actividades, :as => :actividad
-  resources :actividadespadre
-  resources :actividadespadre, :as => :actividadpadre
-  resources :estados
-  resources :categorias
-  resources :eventos
-  resources :locations
-  resources :micrositios
   resources :microposts,    only: [:create, :destroy]
   resources :relationships, only: [:create, :destroy]
-  resources :relationeventos, only: [:create, :destroy]
-  resources :relationcategorias, only: [:create, :destroy]
-  resources :relationmicrositios, only: [:create, :destroy]
-  resources :relationestados, only: [:create, :destroy]
-  resources :relationactividades, only: [:create, :destroy]
-  resources :relationactividadespadre, only: [:create, :destroy]
-
-
-
-
-
-
 
 
 

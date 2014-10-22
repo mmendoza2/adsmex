@@ -10,7 +10,7 @@ Devise.setup do |config|
   # Configure the e-mail address which will be shown in Devise::Mailer,
   # note that it will be overwritten if you use your own mailer class
   # with default "from" parameter.
-  config.mailer_sender = 'ntl@adsmex.com'
+  config.mailer_sender = 'mmendoza2@adsmex.com'
 
   # Configure the class responsible to send e-mails.
   # config.mailer = 'Devise::Mailer'
@@ -229,17 +229,17 @@ Devise.setup do |config|
   # up on your models and hooks.
 
 
-  if Rails.env.development?
-     config.omniauth :facebook, '626384007393278', 'c8e03770698ac3fa74828538c16dceb9',
-                  scope: "email, publish_stream, user_friends ",
-                  :secure_image_url => 'true',
-                  :image_size => 'large'
-  else
-    config.omniauth :facebook, '182819485154177', 'd0a0ccde76db8a64187351ffa7f8d465',
-                scope: "email, publish_stream, user_friends ",
-                :secure_image_url => 'true',
-                :image_size => 'large'
-  end
+#  if Rails.env.development?
+#    config.omniauth :facebook, '626384007393278', 'c8e03770698ac3fa74828538c16dceb9',
+#                  scope: "email, publish_stream, user_friends ",
+#                  :secure_image_url => 'true',
+#                  :image_size => 'large'
+#  else
+#    config.omniauth :facebook, '182819485154177', 'd0a0ccde76db8a64187351ffa7f8d465',
+#                scope: "email, publish_stream, user_friends ",
+#                :secure_image_url => 'true',
+#                :image_size => 'large'
+#  end
 
   #OmniAuth.config.logger = Rails.logger
 

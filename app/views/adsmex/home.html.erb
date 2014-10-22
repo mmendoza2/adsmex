@@ -2,145 +2,286 @@
 
 <% if signed_in? %>
 
+    <div class="container">
+
+      <table class="table table-bordered table-bordered">
+        <tr>
+          <th> <%= link_to "name", :sort => "Name" %>  </th>
+          <th> <%= link_to "categoria", :sort => "categoria" %>  </th>
+          <th> <%= link_to "Nivel 2014", :sort => "nivel2014" %>  </th>
+          <th> <%= link_to "Actualizar 2014", :sort => "" %>  </th>
+          <th> <%= link_to "Nivel 2015", :sort => "nivel2015" %>  </th>
+          <th> <%= link_to "Nivel 2016", :sort => "nivel2016" %>  </th>
+          <th> <%= link_to "Nivel 2017", :sort => "nivel2017" %>  </th>
+          <th> <%= link_to "Nivel 2018", :sort => "nivel2018" %>  </th>
+        </tr>
+
+      <tr class="info">
+        <td></td>
+        <td></td>
+        <td>
+          <%= number_with_precision(Cursousuario.average(:nivel2014, :conditions => {user_id: current_user.id}), precision: 2)  %>
+        </td>
+        <td></td>
+        <td>
+          <%= number_with_precision(Cursousuario.average(:nivel2015, :conditions => {user_id: current_user.id}), precision: 2)  %>
+        </td>
+        <td>
+          <%= number_with_precision(Cursousuario.average(:nivel2016, :conditions => {user_id: current_user.id}), precision: 2)  %>
+        </td>
+        <td>
+          <%= number_with_precision(Cursousuario.average(:nivel2017, :conditions => {user_id: current_user.id}), precision: 2)  %>
+        </td>
+        <td>
+          <%= number_with_precision(Cursousuario.average(:nivel2018, :conditions => {user_id: current_user.id}), precision: 2)  %>
+        </td>
+
+      </tr>
+
+        <%	 current_user.cursosusuario.each do |x| %>
+
+            <tr>
+              <td> <%= link_to(x.curso.name ,x.curso)  %></td>
+              <td> <%= x.curso.categoria %></td>
+
+              <%	 if x.nivel2014 == 10  %>
+                  <td class="success"> 10 </td>
+              <%    else if x.nivel2014 == 5  %>
+                  <td class="warning"> 5 </td>
+              <%	else if x.nivel2014 == 1  %>
+                  <td class="danger"> 1 </td>
+              <%	end  end end %>
+
+              <td id="td-<%=x.id%>" >
+                   <div id="curso-<%=x.id%>">
+                    <div class="col-md-6">
+                     <%=	 form_for x ,remote: true do |f| %>
+                          <%=	 f.text_field :niveln2014, class: "input-sm" %>
+                          </div>
+                          <div class="col-md-6">
+                     <%=	 f.submit "aceptar", class: "btn-sm" %>
+                      <% end %>
+                      </div>
+                   </div>
+              </td>
+
+              <%	 if x.nivel2015 == 10  %>
+                  <td class="success"> 10 </td>
+              <%    else if x.nivel2015 == 5  %>
+                  <td class="warning"> 5 </td>
+              <%	else if x.nivel2015 == 1  %>
+                  <td class="danger"> 1 </td>
+              <%	end  end end %>
+
+              <%	 if x.nivel2016 == 10  %>
+                  <td class="success"> 10 </td>
+              <%    else if x.nivel2016 == 5  %>
+                  <td class="warning"> 5 </td>
+              <%	else if x.nivel2016 == 1  %>
+                  <td class="danger"> 1 </td>
+              <%	end  end end %>
+
+              <%	 if x.nivel2017 == 10  %>
+                  <td class="success"> 10 </td>
+              <%    else if x.nivel2017 == 5  %>
+                  <td class="warning"> 5 </td>
+              <%	else if x.nivel2017 == 1  %>
+                  <td class="danger"> 1 </td>
+              <%	end  end end %>
+
+              <%	 if x.nivel2018 == 10  %>
+                  <td class="success"> 10 </td>
+              <%    else if x.nivel2018 == 5  %>
+                  <td class="warning"> 5 </td>
+              <%	else if x.nivel2018 == 1  %>
+                  <td class="danger"> 1 </td>
+              <%	end  end end %>
+
+            </tr>
+        <% end %>
+      </table>
+
+
+
+    <%	 if current_user.id == (1) && (32)  %>
+
+
+        <table class="table table-bordered table-bordered">
+          <tr>
+            <th> <%= link_to "name", :sort => "Name" %>  </th>
+            <th> <%= link_to "Nivel 2014", :sort => "nivel2014" %>  </th>
+            <th> <%= link_to "Nivel 2015", :sort => "nivel2015" %>  </th>
+            <th> <%= link_to "Nivel 2016", :sort => "nivel2016" %>  </th>
+            <th> <%= link_to "Nivel 2017", :sort => "nivel2017" %>  </th>
+            <th> <%= link_to "Nivel 2018", :sort => "nivel2018" %>  </th>
+          </tr>
+
+          <% @users.each do |user|  %>
+
+          <tr class="info">
+            <td><%=	 user.name %></td>
+            <td>
+              <%= number_with_precision(Cursousuario.average(:nivel2014, :conditions => {user_id: user.id}), precision: 2)  %>
+            </td>
+            <td>
+              <%= number_with_precision(Cursousuario.average(:nivel2015, :conditions => {user_id: user.id}), precision: 2)  %>
+            </td>
+            <td>
+              <%= number_with_precision(Cursousuario.average(:nivel2016, :conditions => {user_id: user.id}), precision: 2)  %>
+            </td>
+            <td>
+              <%= number_with_precision(Cursousuario.average(:nivel2017, :conditions => {user_id: user.id}), precision: 2)  %>
+            </td>
+            <td>
+              <%= number_with_precision(Cursousuario.average(:nivel2018, :conditions => {user_id: user.id}), precision: 2)  %>
+            </td>
+
+          </tr>
+          <%	 end %>
+        </table>
+
+    <%	 else %>
+    <%	 end %>
+    </div>
 
 
 <% else %>
 
-<div class="col-md-6 col-sm-6 col-xs-12" style="background-color: #e6e6e5; margin-bottom: 10px" >
-      <div class="row cuadrohome" >
-        <h2><%=	 link_to "OUR", nosotros_path %></h2>
-        <h1><%=	 link_to "COMPANY", nosotros_path %> </h1>
-        <hr>
-        <div class="row" style="height: 60px; z-index: 2">
+    <div class="col-md-6 col-sm-6 col-xs-12" style="background-color: #e6e6e5; margin-bottom: 10px" >
+          <div class="row cuadrohome" >
+            <h2><%=	 link_to "OUR", nosotros_path %></h2>
+            <h1><%=	 link_to "COMPANY", nosotros_path %> </h1>
+            <hr>
+            <div class="row" style="height: 60px; z-index: 2">
+                <ul class="nav " style="font-size: 16px; color: #808080">
+                  <li> ADS History</li>
+                  <li> Mission & Vision</li>
+                </ul>
+              <div class="col-md-2 col-xs-2 btn-warning" style="border-radius: 8px; margin-left: 10px">
+                <%=	 link_to "More ->", nosotros_path, class: "blanco" %>
+              </div>
+            </div>
+            <div class="row" style="z-index: 2">
+              <div class="col-md-offset-3">
+              <%=  image_tag "https://s3.amazonaws.com/adsmex/nosotrosimg.png", class: "imageneshome" %>
+              </div>
+            </div>
+          </div>
+          <div class="row cuadrohome" style=" margin-right: -10px; margin-top: 10px  ">
+            <h2><%=	 link_to "AUGMENTED", realidad_aumentada_path %></h2>
+            <h1><%=	 link_to "REALITY", realidad_aumentada_path %> </h1>
+
+              <hr>
             <ul class="nav " style="font-size: 16px; color: #808080">
-              <li> ADS History</li>
-              <li> Mission & Vision</li>
+              <li>Used to optimize maintenance processes          </li>
+              <li> Reduction in time and resOURces during training of personnel       </li>
             </ul>
+            <div class="col-md-2 col-xs-2 btn-warning" style="border-radius: 8px; margin-left: 10px;">
+              <%=	 link_to "More ->", realidad_aumentada_path , class: "blanco" %>
+            </div>
+
+              <div class="row">
+                <div class="col-md-offset-3">
+                  <%=  image_tag "https://s3.amazonaws.com/adsmex/Productos+-02.png", class: "imageneshome" %>
+                </div>
+              </div>
+          </div>
+
+          <div class="row cuadrohome" style="height: 379px; margin-right: -10px; margin-top: 10px"  >
+            <h2><%=	 link_to "WEDGE LOCKING SOLUTIONS", "http://adsmex.com/nordlock/" %></h2>
+            <div style="margin: -20px"><%= link_to image_tag("https://s3.amazonaws.com/adsmex/Nordlock-05.png"), "http://adsmex.com/nordlock/" %> </div>
+              <hr>
+              <div class="row" style="height: 25px">
+                <ul class="nav"  style="font-size: 16px; color: #808080">
+                  <li> Applications </li>
+                  <li> Dimensions </li>
+                </ul>
+                <div class="col-md-2 col-xs-2 btn-warning" style="border-radius: 8px; margin-left: 10px">
+                  <%=	 link_to "More ->", "http://adsmex.com/nordlock/", class: "blanco" %>
+                </div>
+              </div>
+              <div class="row" >
+                <div class="col-md-offset-6" >
+                  <%=  image_tag "https://s3.amazonaws.com/adsmex/Productos+-04.png"%>
+                </div>
+              </div>
+          </div>
+    </div>
+
+
+
+    <div class="col-md-6 col-sm-6 col-xs-12" style="background-color: #e6e6e5" >
+      <div class="row cuadrohome" style=" margin-left: -10px;">
+        <h2><%=	 link_to "OUR", productos_path %></h2>
+        <h1><%=	 link_to "PRODUCTS", productos_path %> </h1>
+        <hr>
+        <div class="row" style="height: 60px">
+           <%	 @productos.first(2).each do |x| %>
+              <div class="col-md-6">
+                  <ul class="nav"  style="font-size: 16px; color: #808080">
+                    <li> <%=	link_to x.name, x %> </li>
+
+                  </ul>
+              </div>
+           <% end %>
+          <%	 @productos.last(2).each do |x| %>
+              <div class="col-md-6">
+                <ul class="nav"  style="font-size: 16px; color: #808080">
+                  <li> <%=	link_to x.name, x %> </li>
+
+                </ul>
+              </div>
+          <% end %>
           <div class="col-md-2 col-xs-2 btn-warning" style="border-radius: 8px; margin-left: 10px">
             <%=	 link_to "More ->", nosotros_path, class: "blanco" %>
           </div>
         </div>
-        <div class="row" style="z-index: 2">
+        <div class="row">
           <div class="col-md-offset-3">
-          <%=  image_tag "https://s3.amazonaws.com/adsmex/nosotrosimg.png", class: "imageneshome" %>
+            <%=  image_tag "https://s3.amazonaws.com/adsmex/Productos+-01.png", class: "imageneshome" %>
           </div>
         </div>
       </div>
-      <div class="row cuadrohome" style=" margin-right: -10px; margin-top: 10px  ">
-        <h2><%=	 link_to "AUGMENTED", realidad_aumentada_path %></h2>
-        <h1><%=	 link_to "REALITY", realidad_aumentada_path %> </h1>
+      <div class="row cuadrohome" style=" margin-left: -10px; margin-top: 10px  ">
+        <h2><%=	 link_to "6 SIGMA ", metodologias_path %></h2>
+        <h1><%=	 link_to "METHODOLOGIES", metodologias_path %> </h1>
+        <hr>
+        <div class="row" style="height: 60px">
+          <%	 @metodologias.first(4).each do |x| %>
+              <div class="col-md-6">
+                <ul class="nav"  style="font-size: 16px; color: #808080">
+                  <li> <%=	link_to x.name, x %> </li>
 
-          <hr>
-        <ul class="nav " style="font-size: 16px; color: #808080">
-          <li>Used to optimize maintenance processes          </li>
-          <li> Reduction in time and resOURces during training of personnel       </li>
-        </ul>
-        <div class="col-md-2 col-xs-2 btn-warning" style="border-radius: 8px; margin-left: 10px;">
-          <%=	 link_to "More ->", realidad_aumentada_path , class: "blanco" %>
+                </ul>
+              </div>
+          <% end %>
+          <%	 @metodologias.last(4).each do |x| %>
+              <div class="col-md-6">
+                <ul class="nav"  style="font-size: 16px; color: #808080">
+                  <li> <%=	link_to x.name, x %> </li>
+
+                </ul>
+              </div>
+          <% end %>
+          <div class="col-md-2 col-xs-2 btn-warning" style="border-radius: 8px; margin-left: 10px">
+            <%=	 link_to "More ->", nosotros_path, class: "blanco" %>
+          </div>
         </div>
-
-          <div class="row">
-            <div class="col-md-offset-3">
-              <%=  image_tag "https://s3.amazonaws.com/adsmex/Productos+-02.png", class: "imageneshome" %>
-            </div>
+        <div class="row">
+          <div class="col-md-offset-3">
+            <%=  image_tag "https://s3.amazonaws.com/adsmex/Productos+-03.png", class: "imageneshome" %>
           </div>
+        </div>
       </div>
 
-      <div class="row cuadrohome" style="height: 379px; margin-right: -10px; margin-top: 10px"  >
-        <h2><%=	 link_to "WEDGE LOCKING SOLUTIONS", "http://adsmex.com/nordlock/" %></h2>
-        <div style="margin: -20px"><%= link_to image_tag("https://s3.amazonaws.com/adsmex/Nordlock-05.png"), "http://adsmex.com/nordlock/" %> </div>
-          <hr>
-          <div class="row" style="height: 25px">
-            <ul class="nav"  style="font-size: 16px; color: #808080">
-              <li> Applications </li>
-              <li> Dimensions </li>
-            </ul>
-            <div class="col-md-2 col-xs-2 btn-warning" style="border-radius: 8px; margin-left: 10px">
-              <%=	 link_to "More ->", "http://adsmex.com/nordlock/", class: "blanco" %>
-            </div>
-          </div>
-          <div class="row" >
-            <div class="col-md-offset-6" >
-              <%=  image_tag "https://s3.amazonaws.com/adsmex/Productos+-04.png"%>
-            </div>
-          </div>
-      </div>
-</div>
+      <div class="row" style="height: 379px; background-color: #4c73a2; padding: 30px; margin-left: -10px; margin-top: 10px  ">
+        <h2 > <%=	 link_to "Contact", nosotros_path, class: "blanco" %></h2>
+
+        <%=	 render 'shared/new', :@contact => Contact.new %>
 
 
-
-<div class="col-md-6 col-sm-6 col-xs-12" style="background-color: #e6e6e5" >
-  <div class="row cuadrohome" style=" margin-left: -10px;">
-    <h2><%=	 link_to "OUR", productos_path %></h2>
-    <h1><%=	 link_to "PRODUCTS", productos_path %> </h1>
-    <hr>
-    <div class="row" style="height: 60px">
-       <%	 @productos.first(2).each do |x| %>
-          <div class="col-md-6">
-              <ul class="nav"  style="font-size: 16px; color: #808080">
-                <li> <%=	link_to x.name, x %> </li>
-
-              </ul>
-          </div>
-       <% end %>
-      <%	 @productos.last(2).each do |x| %>
-          <div class="col-md-6">
-            <ul class="nav"  style="font-size: 16px; color: #808080">
-              <li> <%=	link_to x.name, x %> </li>
-
-            </ul>
-          </div>
-      <% end %>
-      <div class="col-md-2 col-xs-2 btn-warning" style="border-radius: 8px; margin-left: 10px">
-        <%=	 link_to "More ->", nosotros_path, class: "blanco" %>
       </div>
     </div>
-    <div class="row">
-      <div class="col-md-offset-3">
-        <%=  image_tag "https://s3.amazonaws.com/adsmex/Productos+-01.png", class: "imageneshome" %>
-      </div>
-    </div>
-  </div>
-  <div class="row cuadrohome" style=" margin-left: -10px; margin-top: 10px  ">
-    <h2><%=	 link_to "6 SIGMA ", metodologias_path %></h2>
-    <h1><%=	 link_to "METHODOLOGIES", metodologias_path %> </h1>
-    <hr>
-    <div class="row" style="height: 60px">
-      <%	 @metodologias.first(4).each do |x| %>
-          <div class="col-md-6">
-            <ul class="nav"  style="font-size: 16px; color: #808080">
-              <li> <%=	link_to x.name, x %> </li>
-
-            </ul>
-          </div>
-      <% end %>
-      <%	 @metodologias.last(4).each do |x| %>
-          <div class="col-md-6">
-            <ul class="nav"  style="font-size: 16px; color: #808080">
-              <li> <%=	link_to x.name, x %> </li>
-
-            </ul>
-          </div>
-      <% end %>
-      <div class="col-md-2 col-xs-2 btn-warning" style="border-radius: 8px; margin-left: 10px">
-        <%=	 link_to "More ->", nosotros_path, class: "blanco" %>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-md-offset-3">
-        <%=  image_tag "https://s3.amazonaws.com/adsmex/Productos+-03.png", class: "imageneshome" %>
-      </div>
-    </div>
-  </div>
-
-  <div class="row" style="height: 379px; background-color: #4c73a2; padding: 30px; margin-left: -10px; margin-top: 10px  ">
-    <h2 > <%=	 link_to "Contact", nosotros_path, class: "blanco" %></h2>
-
-    <%=	 render 'shared/new', :@contact => Contact.new %>
-
-
-  </div>
-</div>
 
 
 <% end %>

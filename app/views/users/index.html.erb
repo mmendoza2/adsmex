@@ -2,84 +2,30 @@
 
 <% if current_user.admin?  %>
 
-    <div class="row ">
-      <div class="col-sm-12 col-xs-12 ">
-        <div class="panel-group" id="accordion">
-          <div class="panel panel-default">
-            <div class="panel-heading">
-              <h4 class="panel-title">
-                <a data-toggle="collapse"  href="#collapseFour">
-                  Sigue a otros usuarios
-                </a>
-              </h4>
-            </div>
-            <div id="collapseFour" class="panel-collapse collapse in">
-              <div class="panel-body">
-                <div class="row" style="margin-top: -15px; margin-bottom: -15px">
-                  <table class="table table-hover">
-                    <tr>
-                      <th> <%= link_to "id", :sort => "Id" %>  </th>
-                      <th> <%= link_to "name", :sort => "Name" %>  </th>
-                      <th> <%= link_to "email", :sort => "Email" %>  </th>
-                      <th> <%= link_to "admin", :sort => "admin" %>  </th>
-                    </tr>
-
-                    <% @user.each do |x|  %>
-                        <tr>
-                          <td> <%=x.id %></td>
-                          <td> <%=x.name %></td>
-                          <td> <%=x.email %></td>
-                          <td> <%=x.admin %></td>
-                          <td>
-                            <%= form_for(x, :html => { :multipart => true }) do |f| %>
-                                <%= render 'shared/error_messages', object: f.object %>
-
-                                <%= f.label "admin?" %>
-                                <%= f.check_box :admin %>
-
-                                <%= f.submit "Submit", class: "button small radius" %>
-                            <% end %>
-                          </td>
-
-
-                        </tr>
-                    <% end  %>
-
-                  </table>
-
-
-                </div>
-              </div>
-            </div>
-          </div>
-
-        </div>
-      </div>
-    </div>
-
-
-
-
-    </div>
-
-
-<% else  %>
-
-
-    <h1>Usuarios</h1>
-
-
     <table class="table table-hover">
       <tr>
+        <th> <%= link_to "id", :sort => "Id" %>  </th>
         <th> <%= link_to "name", :sort => "Name" %>  </th>
         <th> <%= link_to "email", :sort => "Email" %>  </th>
+        <th> <%= link_to "admin", :sort => "admin" %>  </th>
       </tr>
 
       <% @user.each do |x|  %>
           <tr>
-            <td> <%=link_to x.name, x %></td>
+            <td> <%=x.id %></td>
+            <td> <%=x.name %></td>
             <td> <%=x.email %></td>
+            <td> <%=x.admin %></td>
+            <td>
+              <%= form_for(x, :html => { :multipart => true }) do |f| %>
+                  <%= render 'shared/error_messages', object: f.object %>
 
+                  <%= f.label "admin?" %>
+                  <%= f.check_box :admin %>
+
+                  <%= f.submit "Submit", class: "button small radius" %>
+              <% end %>
+            </td>
 
 
           </tr>
@@ -87,6 +33,23 @@
 
     </table>
 
+<% else  %>
+
+<div class="container">
+    <h1>Usuarios</h1>
+    <table class="table table-hover">
+      <tr>
+        <th> <%= link_to "name", :sort => "Name" %>  </th>
+        <th> <%= link_to "email", :sort => "Email" %>  </th>
+      </tr>
+      <% @user.each do |x|  %>
+      <tr>
+        <td> <%=link_to x.name, x %></td>
+        <td> <%=x.email %></td>
+      </tr>
+      <% end  %>
+    </table>
+</div>
 
 <% end  %>
 

@@ -1,0 +1,8 @@
+$('#curso-<%= @cursousuario.id %>').remove();
+<%	 if @cursousuario.niveln2014 == 10  %>
+$('#td-<%= @cursousuario.id %>').closest('td').addClass('success');
+<%    else if @cursousuario.niveln2014 == 5  %>
+$('#td-<%= @cursousuario.id %>').closest('td').addClass('warning');
+<%	else if @cursousuario.niveln2014 == 1  %>
+$('#td-<%= @cursousuario.id %>').closest('td').addClass('danger');
+<%	end  end end %>

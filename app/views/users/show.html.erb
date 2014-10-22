@@ -1,137 +1,33 @@
 
-<%	 if current_user.id == 1 or 32 %>
-    <table class="table table-hover">
-      <tr>
-        <th> <%= link_to "name", :sort => "name" %>  </th>
-        <th> <%= link_to "Promedio expertos 2014", :sort => "Promedio" %>  </th>
-        <th> <%= link_to "Promedio expertos 2015", :sort => "Promedio" %>  </th>
-        <th> <%= link_to "Promedio expertos 2016", :sort => "Promedio" %>  </th>
-        <th> <%= link_to "Promedio expertos 2017", :sort => "Promedio" %>  </th>
-        <th> <%= link_to "Promedio expertos 2018", :sort => "Promedio" %>  </th>
-      </tr>
-    <% @users.each do |user|  %>
-      <tr>
-        <td>  <%= user.name	  %> </td>
-        <td style="text-align: center">
-        <% totaltrue = user.cursosusuario.where(nivel32014: true).count * 10 %>
-        <% total = user.cursosusuario.find(:all).count %>
-        <%=  number_with_precision(totaltrue.to_f / total.to_f, precision: 1) %>
-        </td>
-        <td style="text-align: center">
-          <% totaltrue = user.cursosusuario.where(nivel32015: true).count * 10 %>
-          <% total = user.cursosusuario.find(:all).count %>
-          <%=  number_with_precision(totaltrue.to_f / total.to_f, precision: 1) %>
-        </td>
-        <td style="text-align: center">
-          <% totaltrue = user.cursosusuario.where(nivel32016: true).count * 10 %>
-          <% total = user.cursosusuario.find(:all).count %>
-          <%=  number_with_precision(totaltrue.to_f / total.to_f, precision: 1) %>
-        </td>
-        <td style="text-align: center">
-          <% totaltrue = user.cursosusuario.where(nivel32017: true).count * 10 %>
-          <% total = user.cursosusuario.find(:all).count %>
-          <%=  number_with_precision(totaltrue.to_f / total.to_f, precision: 1) %>
-        </td>
-        <td style="text-align: center">
-          <% totaltrue = user.cursosusuario.where(nivel32018: true).count * 10 %>
-          <% total = user.cursosusuario.find(:all).count %>
-          <%=  number_with_precision(totaltrue.to_f / total.to_f, precision: 1) %>
-        </td>
-      </tr>
-    <%	 end %>
-    </table>
-<%	 else %>
-<%	 end %>
+<div class="container">
+    <div>
+      <% if @user.photo_file_name.blank?  %>
+          <% if @user.avatar.blank?  %>
+              <%=  image_tag "http://imagenes.notelimites.s3.amazonaws.com/users/default_user.png", class: "avatargrande" %>
+          <%	 else %>
+              <%= image_tag @user.avatar, class: "avatargrande" %>
+          <% end %>
+      <% else %>
+          <%=  image_tag @user.photo.url(:medium), class: "avatargrande"%>
+      <%	 end %>
+    </div>
+    <h4><%= @user.name %></h4>
 
-<div>
-  <% if @user.photo_file_name.blank?  %>
-      <% if @user.avatar.blank?  %>
-          <%=  image_tag "http://imagenes.notelimites.s3.amazonaws.com/users/default_user.png", class: "avatarmedio" %>
-      <%	 else %>
-          <%= image_tag @user.avatar, class: "avatargrande" %>
+
+    <div class="col-md-6">
+      <strong>URL</strong>  <%= link_to user_path(@user), @user %><br />
+      <strong>Microposts</strong> <%= @user.microposts.count %>
+    </div>
+
+    <div>
+    </div>
+
+
+
+    <div class="col-md-6" style="margin-top: 100px">
+      <% if @user.microposts.any? %>
       <% end %>
-  <% else %>
-      <%=  image_tag @user.photo.url(:medium), class: "avatargrande"%>
-  <%	 end %>
+    </div>
+
+
 </div>
-<h4><%= @user.name %></h4>
-<%	 if current_user.id == @user.id %>
-    <h2>Cursos a tomar en 2014</h2>
-    <table class="table table-hover">
-      <tr>
-        <th> <%= link_to "name", :sort => "Name" %>  </th>
-        <th> <%= link_to "categoria", :sort => "categoria" %>  </th>
-        <th> <%= link_to "Nivel", :sort => "nivel1" %>  </th>
-      </tr>
-      <%	 current_user.cursosusuario.each do |x| %>
-
-          <%	 if  x.a2014 == true %>
-              <%	 if x.nivel32014 == true  %>
-                  <tr>
-                    <td> <%= link_to(x.curso.name ,x.curso)  %></td>
-                    <td> <%= x.curso.categoria %></td>
-                    <td> Avanzado </td>
-                  </tr>
-              <%    else if x.nivel22014 == true  %>
-                  <tr>
-                    <td> <%= link_to(x.curso.name ,x.curso)  %></td>
-                    <td> <%= x.curso.categoria %></td>
-                    <td> Intermedio </td>
-                  </tr>
-              <%	else if x.nivel12014 == true  %>
-                  <tr>
-                    <td> <%= link_to(x.curso.name ,x.curso)  %></td>
-                    <td> <%= x.curso.categoria %></td>
-                    <td> Principiante </td>
-                  </tr>
-              <%	end  end end %>
-              <%	 else if  x.a2013 == true %>
-                  <%	 if x.nivel32013 == true  %>
-                  <%	 else if x.nivel22013 == true  %>
-                      <%	 else if x.nivel12013 == true  %>
-                          <%	 end  end end %>
-              <%	 else   %>
-          <%	 end  end %>
-      <% end %>
-    </table>
-<%	 else %>
-
-    <h2>Cursos que usuario esta tomando</h2>
-
-    <table class="table table-hover">
-      <tr>
-        <th> <%= link_to "name", :sort => "Name" %>  </th>
-        <th> <%= link_to "categoria", :sort => "categoria" %>  </th>
-        <th> <%= link_to "Nivel", :sort => "nivel1" %>  </th>
-      </tr>
-      <%	 @user.cursosusuario.each do |x| %>
-          <%	 if  x.a2014 == true %>
-              <%	 if x.nivel32014 == true  %>
-                  <tr>
-                    <td> <%= link_to(x.curso.name ,x.curso)  %></td>
-                    <td> <%= x.curso.categoria %></td>
-                    <td> Avanzado </td>
-                  </tr>
-              <%    else if x.nivel22014 == true  %>
-                      <tr>
-                        <td> <%= link_to(x.curso.name ,x.curso)  %></td>
-                        <td> <%= x.curso.categoria %></td>
-                        <td> Intermedio </td>
-                      </tr>
-                  <%	else if x.nivel12014 == true  %>
-                          <tr>
-                            <td> <%= link_to(x.curso.name ,x.curso)  %></td>
-                            <td> <%= x.curso.categoria %></td>
-                            <td> Principiante </td>
-                          </tr>
-                      <%	end  end end %>
-          <%	 else if  x.a2013 == true %>
-                  <%	 if x.nivel32013 == true  %>
-                  <%	 else if x.nivel22013 == true  %>
-                      <%	 else if x.nivel12013 == true  %>
-                          <%	 end  end end %>
-              <%	 else   %>
-              <%	 end  end %>
-      <% end %>
-    </table>
-<%	 end %>
