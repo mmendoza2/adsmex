@@ -1,10 +1,12 @@
+<div class="container">
+
 <div class="col-md-6" style="margin-top: 10px; margin-bottom: 20px">
   <h2 style="margin-bottom: 20px">Expertos en el tema</h2>
   <%	 @user.each do |x| %>
      <%	 x.cursosusuario.each do |t| %>
 
          <%	 if t.curso_id == @curso.id  %>
-              <%	 if t.nivel32014 == true  %>
+              <%	 if t.nivel2014 == true  %>
 
               <li class="glyphicon-list">  <%= link_to x.name, x %></li>
 
@@ -53,7 +55,7 @@
     <%	 current_user.cursosusuario.each do |t| %>
 
         <%	 if t.curso_id == @curso.id  %>
-            <%	 if t.nivel32014 == true  %>
+            <%	 if t.nivel2014 == true  %>
             <div class="col-md-4 ">
 
               <%= form_for(@curso.archivos.new, :html => { :multipart => true }) do |f|  %>
@@ -86,3 +88,4 @@
     <%	 end %>
 
 
+</div>
