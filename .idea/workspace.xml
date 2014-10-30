@@ -39,8 +39,8 @@
       <file leaf-file-name="home.html.erb" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/views/adsmex/home.html.erb">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.082125604" vertical-offset="2004" max-vertical-offset="4935">
-              <caret line="137" column="30" selection-start-line="137" selection-start-column="30" selection-end-line="137" selection-end-column="30" />
+            <state vertical-scroll-proportion="0.66183573" vertical-offset="2019" max-vertical-offset="5010">
+              <caret line="162" column="74" selection-start-line="162" selection-start-column="74" selection-end-line="162" selection-end-column="74" />
               <folding>
                 <element signature="n#style#0;n#li#0;n#ul#0;n#li#3;n#ul#0;n#div#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#li#1;n#ul#0;n#li#3;n#ul#0;n#div#0;n#!!top" expanded="true" />
@@ -1000,8 +1000,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/views/adsmex/home.html.erb">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.082125604" vertical-offset="2004" max-vertical-offset="4935">
-          <caret line="137" column="30" selection-start-line="137" selection-start-column="30" selection-end-line="137" selection-end-column="30" />
+        <state vertical-scroll-proportion="0.66183573" vertical-offset="2019" max-vertical-offset="5010">
+          <caret line="162" column="74" selection-start-line="162" selection-start-column="74" selection-end-line="162" selection-end-column="74" />
           <folding>
             <element signature="n#style#0;n#li#0;n#ul#0;n#li#3;n#ul#0;n#div#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#li#1;n#ul#0;n#li#3;n#ul#0;n#div#0;n#!!top" expanded="true" />
