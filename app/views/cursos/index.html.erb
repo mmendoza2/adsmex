@@ -13,7 +13,7 @@
   <%	 current_user.cursosusuario.each do |x| %>
 
           <%	 if  x.a2014 == true %>
-               <%	 if x.nivel3 == true  %>
+               <%	 if x.nivel2014 == 10  %>
                       <tr>
                         <td> <%= link_to(x.curso.name ,x.curso)  %></td>
                         <td> <%= x.curso.categoria %></td>
@@ -21,7 +21,7 @@
                         <td> <%= x.nivel2 %></td>
                         <td> <%= x.nivel3 %></td>
                       </tr>
-              <%	 else if x.nivel2 == true  %>
+              <%	 else if x.nivel2014 == 5  %>
                       <tr>
                         <td> <%= link_to(x.curso.name ,x.curso)  %></td>
                         <td> <%= x.curso.categoria %></td>
@@ -29,7 +29,7 @@
                         <td> <%= x.nivel2 %></td>
                         <td> <%= x.nivel3 %></td>
                       </tr>
-              <%	 else if x.nivel1 == true  %>
+              <%	 else if x.nivel2014 == 1  %>
                       <tr>
                         <td> <%= link_to(x.curso.name ,x.curso)  %></td>
                         <td> <%= x.curso.categoria %></td>
@@ -38,13 +38,10 @@
                         <td> <%= x.nivel3 %></td>
                       </tr>
               <%	 end  end end %>
-          <%	 else if  x.a2013 == true %>
-               <%	 if x.nivel3 == true  %>
-               <%	 else if x.nivel2 == true  %>
-               <%	 else if x.nivel1 == true  %>
-               <%	 end  end end %>
-          <%	 else   %>
-          <%	 end  end %>
+          <%	 else %>
+
+
+          <%	 end %>
   <% end %>
 
 

@@ -1,8 +1,11 @@
 $('#curso-<%= @cursousuario.id %>').remove();
 <%	 if @cursousuario.niveln2014 == 10  %>
 $('#td-<%= @cursousuario.id %>').closest('td').addClass('success');
+$('#td-<%= @cursousuario.id %>').closest('td').append('<p style="text-align: center">10</p>');
 <%    else if @cursousuario.niveln2014 == 5  %>
 $('#td-<%= @cursousuario.id %>').closest('td').addClass('warning');
+$('#td-<%= @cursousuario.id %>').closest('td').append('<p style="text-align: center">5</p>');
 <%	else if @cursousuario.niveln2014 == 1  %>
 $('#td-<%= @cursousuario.id %>').closest('td').addClass('danger');
+$('#td-<%= @cursousuario.id %>').closest('td').append('<p style="text-align: center">1</p>');
 <%	end  end end %>

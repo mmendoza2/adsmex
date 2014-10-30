@@ -3,6 +3,20 @@
 <% if signed_in? %>
 
     <div class="container">
+      <h2>Instrucciones para actualizar tu Matriz para el 2014</h2>
+      <ul>
+        <li>La columna "Actualizar 2014" es la calificación final para este año </li>
+        <li>Al momento de darle click en aceptar se guarda la calificación nueva</li>
+        <li>Si cometes algún error puedes actualizar la página y solo modificar el renglón en el que te equivocaste, sin necesidad de volver a actualizar los demás, pues estos ya se guardaron</li>
+        <li>Las calficaciones que existen son:
+            <ul>
+              <li style="color: #ff0000">1: Si conoces la herramienta, software o metodología</li>
+              <li style="color: orange">5: Si lo sabes usar</li>
+              <li style="color: green">10: Si lo puedes enseñar, dar entrenamientos, dar presentaciones, configurar, etc.</li>
+            </ul>
+        </li>
+        <li>Al momento de terminar y refrescar la página puedes ver el promedio obtenido actualizado </li>
+      </ul>
 
       <table class="table table-bordered table-bordered">
         <tr>
@@ -10,6 +24,7 @@
           <th> <%= link_to "categoria", :sort => "categoria" %>  </th>
           <th> <%= link_to "Nivel 2014", :sort => "nivel2014" %>  </th>
           <th> <%= link_to "Actualizar 2014", :sort => "" %>  </th>
+          <th> """""</th>
           <th> <%= link_to "Nivel 2015", :sort => "nivel2015" %>  </th>
           <th> <%= link_to "Nivel 2016", :sort => "nivel2016" %>  </th>
           <th> <%= link_to "Nivel 2017", :sort => "nivel2017" %>  </th>
@@ -17,10 +32,13 @@
         </tr>
 
       <tr class="info">
-        <td></td>
+        <td>PROMEDIOS</td>
         <td></td>
         <td>
           <%= number_with_precision(Cursousuario.average(:nivel2014, :conditions => {user_id: current_user.id}), precision: 2)  %>
+        </td>
+        <td style="text-align: center">
+          <%= number_with_precision(Cursousuario.average(:niveln2014, :conditions => {user_id: current_user.id}), precision: 2)  %>
         </td>
         <td></td>
         <td>
@@ -55,6 +73,8 @@
               <td id="td-<%=x.id%>" >
                    <div id="curso-<%=x.id%>">
                     <div class="col-md-6">
+
+
                      <%=	 form_for x ,remote: true do |f| %>
                           <%=	 f.text_field :niveln2014, class: "input-sm" %>
                           </div>
@@ -64,6 +84,7 @@
                       </div>
                    </div>
               </td>
+              <td></td>
 
               <%	 if x.nivel2015 == 10  %>
                   <td class="success"> 10 </td>
