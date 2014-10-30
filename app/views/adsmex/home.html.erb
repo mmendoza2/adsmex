@@ -124,44 +124,59 @@
 
 
 
-    <%	 if current_user.id == (1) && (32)  %>
+    <%	 if current_user.admin  %>
+
+          <table class="table table-bordered table-bordered">
+            <tr>
+              <th> <%= link_to "name", :sort => "Name" %>  </th>
+              <th> <%= link_to "Nivel 2014", :sort => "nivel2014" %>  </th>
+              <th> <%= link_to "Nivel 2015", :sort => "nivel2015" %>  </th>
+              <th> <%= link_to "Nivel 2016", :sort => "nivel2016" %>  </th>
+              <th> <%= link_to "Nivel 2017", :sort => "nivel2017" %>  </th>
+              <th> <%= link_to "Nivel 2018", :sort => "nivel2018" %>  </th>
+            </tr>
+            <tr class="success">
+              <th>Total</th>
+              <th> <%= number_with_precision(Cursousuario.average(:nivel2014), precision: 2)  %> </th>
+              <th> <%= number_with_precision(Cursousuario.average(:nivel2015), precision: 2)  %> </th>
+              <th> <%= number_with_precision(Cursousuario.average(:nivel2016), precision: 2)  %> </th>
+              <th> <%= number_with_precision(Cursousuario.average(:nivel2017), precision: 2)  %> </th>
+              <th> <%= number_with_precision(Cursousuario.average(:nivel2018), precision: 2)  %> </th>
 
 
-        <table class="table table-bordered table-bordered">
-          <tr>
-            <th> <%= link_to "name", :sort => "Name" %>  </th>
-            <th> <%= link_to "Nivel 2014", :sort => "nivel2014" %>  </th>
-            <th> <%= link_to "Nivel 2015", :sort => "nivel2015" %>  </th>
-            <th> <%= link_to "Nivel 2016", :sort => "nivel2016" %>  </th>
-            <th> <%= link_to "Nivel 2017", :sort => "nivel2017" %>  </th>
-            <th> <%= link_to "Nivel 2018", :sort => "nivel2018" %>  </th>
-          </tr>
+            </tr>
 
-          <% @users.each do |user|  %>
 
-          <tr class="info">
-            <td><%=	 user.name %></td>
-            <td>
-              <%= number_with_precision(Cursousuario.average(:nivel2014, :conditions => {user_id: user.id}), precision: 2)  %>
-            </td>
-            <td>
-              <%= number_with_precision(Cursousuario.average(:nivel2015, :conditions => {user_id: user.id}), precision: 2)  %>
-            </td>
-            <td>
-              <%= number_with_precision(Cursousuario.average(:nivel2016, :conditions => {user_id: user.id}), precision: 2)  %>
-            </td>
-            <td>
-              <%= number_with_precision(Cursousuario.average(:nivel2017, :conditions => {user_id: user.id}), precision: 2)  %>
-            </td>
-            <td>
-              <%= number_with_precision(Cursousuario.average(:nivel2018, :conditions => {user_id: user.id}), precision: 2)  %>
-            </td>
+            <% @users.each do |user|  %>
 
-          </tr>
-          <%	 end %>
-        </table>
+
+
+                <tr class="info">
+
+                  <td><%=	 user.name %></td>
+                  <td>
+                    <%= number_with_precision(Cursousuario.average(:nivel2014, :conditions => {user_id: user.id}), precision: 2)  %>
+                  </td>
+                  <td>
+                    <%= number_with_precision(Cursousuario.average(:nivel2015, :conditions => {user_id: user.id}), precision: 2)  %>
+                  </td>
+                  <td>
+                    <%= number_with_precision(Cursousuario.average(:nivel2016, :conditions => {user_id: user.id}), precision: 2)  %>
+                  </td>
+                  <td>
+                    <%= number_with_precision(Cursousuario.average(:nivel2017, :conditions => {user_id: user.id}), precision: 2)  %>
+                  </td>
+                  <td>
+                    <%= number_with_precision(Cursousuario.average(:nivel2018, :conditions => {user_id: user.id}), precision: 2)  %>
+                  </td>
+
+                </tr>
+            <%	 end %>
+          </table>
+
 
     <%	 else %>
+
     <%	 end %>
     </div>
 
