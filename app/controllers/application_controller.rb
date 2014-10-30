@@ -15,6 +15,7 @@ class ApplicationController < ActionController::Base
 
   def after_sign_in_path_for(resource)
     @user ||= current_user
+    UserMailer.login_email(@user).deliver
     root_path
   end
 
