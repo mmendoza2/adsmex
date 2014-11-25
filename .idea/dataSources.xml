@@ -5,16 +5,7 @@
       <driver-ref>postgresql</driver-ref>
       <jdbc-driver>org.postgresql.Driver</jdbc-driver>
       <jdbc-url>jdbc:postgresql://127.0.0.1:5432/adsmex_dev</jdbc-url>
-      <user-name>Meme</user-name>
-      <libraries>
-        <library>
-          <url>file://$USER_HOME$/Library/Preferences/RubyMine50/jdbc-drivers/postgresql-driver-license.txt</url>
-        </library>
-        <library>
-          <url>file://$USER_HOME$/Library/Preferences/RubyMine50/jdbc-drivers/postgresql-9.2-1002.jdbc3.jar</url>
-        </library>
-      </libraries>
+      <libraries />
     </data-source>
   </component>
 </project>
-
