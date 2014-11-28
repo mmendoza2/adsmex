@@ -127,59 +127,6 @@
     <%	 if current_user.admin  %>
 
 
-          <table class="table table-bordered table-bordered">
-
-
-
-            <tr>
-              <th> name  </th>
-              <th> categoria </th>
-              <% @users.each do |user|  %>
-                    <th> <%=	 user.name %> </th>
-                    <th> Nivel 2013  </th>
-                    <th> Nivel 2014  </th>
-                    <th> Nivel Final 2014  </th>
-              <%	 end %>
-            </tr>
-
-            <% @users.each do |user|  %>
-                <%	 user.cursosusuario.each do |x| %>
-                    <tr>
-                      <td> <%= link_to(x.curso.name ,x.curso)  %></td>
-                      <td> <%= x.curso.categoria %></td>
-                      <td></td>
-
-                      <%	 if x.nivel2013 == 10  %>
-                          <td class="success"> 10 </td>
-                      <%    else if x.nivel2013 == 5  %>
-                              <td class="warning"> 5 </td>
-                          <%	else if x.nivel2013 == 1  %>
-                                  <td class="danger"> 1 </td>
-                              <%	end  end end %>
-
-                      <%	 if x.nivel2014 == 10  %>
-                          <td class="success"> 10 </td>
-                      <%    else if x.nivel2014 == 5  %>
-                              <td class="warning"> 5 </td>
-                          <%	else if x.nivel2014 == 1  %>
-                                  <td class="danger"> 1 </td>
-                              <%	end  end end %>
-
-                      <%	 if x.niveln2014 == 10  %>
-                          <td class="success"> 10 </td>
-                      <%    else if x.niveln2014 == 5  %>
-                              <td class="warning"> 5 </td>
-                          <%	else if x.niveln2014 == 1  %>
-                                  <td class="danger"> 1 </td>
-                              <%	end  end end %>
-                    </tr>
-                <% end %>
-            <%	 end %>
-
-          </table>
-
-
-
 
 
 
