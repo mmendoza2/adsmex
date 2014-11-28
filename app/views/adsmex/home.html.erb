@@ -132,50 +132,6 @@
 
 
 
-
-
-
-          <table class="table table-bordered table-bordered">
-            <tr>
-              <th> <%= link_to "name" %>  </th>
-              <th> <%= link_to "Nivel 2013" %>  </th>
-              <th> <%= link_to "Nivel 2014"%>  </th>
-              <th> <%= link_to "Nivel Final 2014" %>  </th>
-            </tr>
-            <tr class="success">
-              <th>Total</th>
-              <th> <%= number_with_precision(Cursousuario.average(:nivel2013), precision: 2)  %> </th>
-              <th> <%= number_with_precision(Cursousuario.average(:nivel2014), precision: 2)  %> </th>
-              <th> <%= number_with_precision(Cursousuario.average(:niveln2014), precision: 2)  %> </th>
-
-
-
-            </tr>
-
-
-            <% @users.each do |user|  %>
-
-
-                <tr class="info">
-
-                  <td><%=	 user.name %></td>
-                  <td>
-                    <%= number_with_precision(Cursousuario.average(:nivel2014, :conditions => {user_id: user.id}), precision: 2)  %>
-                  </td>
-                  <td>
-                    <%= number_with_precision(Cursousuario.average(:niveln2014, :conditions => {user_id: user.id}), precision: 2)  %>
-                  </td>
-                  <td>
-                    <%= number_with_precision(Cursousuario.average(:nivel2015, :conditions => {user_id: user.id}), precision: 2)  %>
-                  </td>
-
-
-                </tr>
-            <%	 end %>
-          </table>
-
-
-
           <table class="table table-bordered table-bordered">
             <tr>
               <th> <%= link_to "name", :sort => "Name" %>  </th>
